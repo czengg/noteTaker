@@ -1,1 +1,2 @@
-web: node app.js
+web: mongod --dbpath data/db
+web: node server.js
