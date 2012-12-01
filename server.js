@@ -17,8 +17,8 @@ function init(){
 
     require('./loginRoutes')(app);
 
-    http.createServer(app).listen(port, function() {
-        console.log("Express server listening on port %d", port);
+    http.createServer(app).listen(3000, function() {
+        console.log("Express server listening on port %d", 3000);
     });
 }
 
@@ -30,6 +30,7 @@ db.on("error", function(err) {
 });
 
 db.once("open", function() {
+	console.log("MongoDB connected");
 });
 
 
@@ -168,6 +169,7 @@ function xmlToHtml(xmlString) {
 
 // Launch server
 app.listen(port);
+
 app.get("/index.html", function(request, response) {
                                 response.sendfile("index.html");
 });
