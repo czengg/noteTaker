@@ -5,6 +5,7 @@ var mongoose = require('mongoose');
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 var app = express();
+var port = process.env.PORT || 8080;
 // var DOMParser = require('xmldom').DOMParser;
 
 function init(){
@@ -16,8 +17,8 @@ function init(){
 
     require('./loginRoutes')(app);
 
-    http.createServer(app).listen(3000, function() {
-        console.log("Express server listening on port %d", 3000);
+    http.createServer(app).listen(port, function() {
+        console.log("Express server listening on port %d", port);
     });
 }
 
@@ -166,7 +167,7 @@ function xmlToHtml(xmlString) {
 }
 
 // Launch server
-app.listen(8080);
+app.listen(port);
 app.get("/index.html", function(request, response) {
                                 response.sendfile("index.html");
 });
