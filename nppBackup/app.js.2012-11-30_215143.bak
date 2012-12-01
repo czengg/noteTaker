@@ -1,0 +1,134 @@
+var path = require('path');
+var express = require('express');
+var http = require('http');
+var mongoose = require('mongoose');
+var passport = require('passport');
+var LocalStrategy = require('passport-local').Strategy;
+
+function init(){
+    var app = express();
+    configureExpress(app);
+
+    var User = initPassportUser();
+
+    mongoose.connect('mongodb://localhost/myApp');
+
+    require('./loginRoutes')(app);
+
+    http.createServer(app).listen(3000, function() {
+        console.log("Express server listening on port %d", 3000);
+    });
+}
+
+init();
+
+function configureExpress(app){
+    app.configure(function(){
+        app.use(express.bodyParser());
+        app.use(express.methodOverride());
+
+        app.use(express.cookieParser('c0ffee'));
+        app.use(express.session());
+
+        app.use(passport.initialize());
+        app.use(passport.session());
+
+        app.use(app.router);
+        app.use(express.static(path.join(__dirname, 'public')));
+    });
+}
+
+function initPassportUser(){
+    var User = require('./User');
+
+    passport.use(new LocalStrategy(User.authenticate()));
+
+    passport.serializeUser(User.serializeUser());
+    passport.deserializeUser(User.deserializeUser());
+
+    return User;
+}
+
+// CORS Middleware that sends HTTP headers with every request
+// Allows connections from http://localhost:8081
+var allowCrossDomain = function(req, res, next) {
+    res.header('Access-Control-Allow-Origin', 'http://localhost:8081');
+    res.header('Access-Control-Allow-Methods', 'PUT,GET,POST,DELETE,OPTIONS');
+    res.header('Access-Control-Allow-Headers', 'Content-Type,X-Requested-With');
+
+    next();
+}
+
+// Database
+// mongodb://host/dbname
+mongoose.connect('mongodb://localhost/237demo');
+
+// New mongoose schema to create our Todo model
+var Schema = mongoose.Schema;
+var Todo = new Schema({
+	desc: { type: String, required: true }
+});
+var TodoModel = mongoose.model('Todo', Todo);
+
+// Config
+app.configure(function () {
+  app.use(express.bodyParser());
+  app.use(express.methodOverride());
+  app.use(allowCrossDomain);		// Our CORS middleware
+  app.use(app.router);
+  app.use(express.errorHandler({ dumpExceptions: true, showStack: true }));
+});
+
+// =========== ROUTES ==========
+
+// Get all todos
+app.get('/notes', function (req, res) {
+	return NoteModel.find(function(err, notes) {
+		return res.send(todos);
+	});
+});
+
+// Get a single todo
+app.get(':id/notes/:title', function (req, res) {
+	// pattern matches /todos/*
+	// given id is passed to req.params.id
+	return NoteModel.findById(req.params.id, function(err, note) {
+		res.send(todo);
+	});
+});
+
+// Add a todo
+app.post(':id/notes', function (req,res) {
+	var note = new NoteModel({
+		title: req.body.title,
+		content: req.body.content
+	});
+
+	// save to mongodb
+	note.save();
+
+	// useful so client gets server generated stuff like IDs
+	return res.send(note);
+});
+
+// Delete a todo
+app.delete(':id/notes/:title', function(req, res) {
+	return NoteModel.findById(req.params.id, function(err, todo){
+		return note.remove(function(err) {
+			return res.send('');
+		});
+	});
+});
+
+// Editing a todo
+app.put('/notes/:id', function(req, res) {
+	return NOteModel.findById(req.params.id, function(err, todo) {
+		note.content = req.body.content;
+		note.save();
+		return res.send(todo);
+	});
+});
+
+// Launch server
+app.listen(8080);
+

@@ -1,0 +1,19 @@
+// js/models/todo.js
+
+  var app = app || {};
+
+  // Todo Model
+  // ----------
+  // Our basic **Todo** model has `title` and `completed` attributes.
+
+  app.Note = Backbone.Model.extend({
+
+    // Default attributes for the todo
+    // and ensure that each todo created has `title` and `completed` keys.
+    defaults: {
+      title: '',
+      content: '',
+	  lastEdit: new Date();
+    },
+
+ });
