@@ -3,7 +3,9 @@ var express = require('express');
 var http = require('http');
 var mongoose = require('mongoose');
 var passport = require('passport');
+var util = require('util');
 var LocalStrategy = require('passport-local').Strategy;
+var GoogleStrategy = require('passport-google').Strategy;
 var app = express();
 var port = process.env.PORT || 8080;
 // var DOMParser = require('xmldom').DOMParser;
@@ -34,6 +36,24 @@ db.once("open", function() {
 });
 
 
+passport.serializeUser(function(user, done) {
+	done(null,user);
+});
+passportdeserializeUser(function(obj, done) {
+	done(null,obj);
+});
+
+passport.us(new GoogleStrategy({
+	returnURL: "http://localhost:8080/index.html",
+	realm: "http://localhost:8080/"
+	},
+	function(identifier, profile, done) {
+		process.nextTick(function() {
+			profile.identifier = identifier;
+			return done(null, profile);
+		});
+	};
+));
 
 // Config
 // app.configure(function () {
@@ -46,16 +66,19 @@ db.once("open", function() {
 
 function configureExpress(app){
     app.configure(function(){
-        app.use(express.bodyParser());
-        app.use(express.methodOverride());
+    	app.set('views', __dirname + 'views');
+    	app.set('view engine', 'ejs');
+
+    	app.use(express.logger());
+    	app.use(express.cookieParser());
+    	app.use(express.bodyParser());
+    	app.use(express.methodOverride());
+    	app.use(express.session({}));
+    	app.use(passport.initialize());
+    	app.use(passport.session());
+    	app.use(express.static(__dirname + '/../../public'));
 
         //app.use(allowCrossDomain);
-
-        app.use(express.cookieParser('c0ffee'));
-        app.use(express.session());
-
-        app.use(passport.initialize());
-        app.use(passport.session());
 
         app.use(app.router);
         app.use(express.errorHandler({ dumpExceptions: true, showStack: true }));
@@ -198,3 +221,7 @@ app.get("http://fonts.googleapis.com/css?family=BenchNine|Julius+Sans+One|Archiv
                                 response.sendfile("http://fonts.googleapis.com/css?family=BenchNine|Julius+Sans+One|Archivo+Narrow|Carrois+Gothic+SC");
 });
 
+function ensureAuthenticated(req, res, next) {
+	if (req.isAuthenticated()) { return next();}
+	res.redirected('/login');
+}
