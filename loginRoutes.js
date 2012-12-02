@@ -1,19 +1,18 @@
-var passport = require('passport')
-  , GoogleStrategy = require('passport-google').Strategy
-  , util = require("util");
+var express = require('express');
+var passport = require('passport');
+var util = require('util');
+var GoogleStrategy = require('passport-google').Strategy;
 
 passport.use(new GoogleStrategy( {
-    consumerSecret: "cCA5UQ1Az2veuQrWpAE6cEsa",
-    consumerKey: "125403324444.apps.googleusercontent.com",
-    callbackURL: "http://localhost:8080/auth/google/callback",
     returnURL: "http://localhost:8080/index.html",
     realm: "http://localhost:8080/"
   },
   function(identifier, profile, done) {
 
-    User.findOrCreate({ googleId: profile.id }, function (err, user) {
-      return done(err, user);
-    });
+  	process.nextTick(function () {
+  		profile.identifier = identifier;
+  		return done(null, profile);
+  	})
   }
 ));
 

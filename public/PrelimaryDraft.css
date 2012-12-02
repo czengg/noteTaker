@@ -1,0 +1,209 @@
+h2 {
+	font-size: 50px;
+	font-family: Oswald;
+	margin-bottom: 2%;
+	margin-left: 1%;
+	margin-top: 2%;
+}
+
+h4 {
+	font-size: 15px;
+	font-style: italic;
+	margin-bottom: 30px;
+	margin-left: 1%;
+}
+
+.ui-page-header-fullscreen .ui-content, .ui-page-footer-fullscreen .ui-content {
+	padding-right: 2%;
+	padding-left: 2%;
+}
+
+.content, .ui-content, .ui-li {
+	min-height: 100%;
+	padding-right: 5%;
+	padding-left: 5%;
+	max-height: 100%;
+}
+
+.ui-listview-filter {
+	padding-right: 5%;
+	padding-left: 5%;
+}
+
+#notes_content {
+	min-height: 100%;
+}
+
+#home_content {
+	text-align: center;
+}
+
+#home_content h2 {
+	margin-top: 25%;
+	margin-bottom: 20%;
+	font-size: 50px;
+	font-family: Oswald;
+}
+
+#home_content input {
+	width:50%;
+}
+
+#home_content a {
+	margin-top: 20px;
+	width: 30%;
+	display: inline-block;
+	margin-left: 10px;
+}
+
+#instructions-home_content h2 {
+	margin-bottom: 10%;
+	font-size: 40px;
+}
+
+#instructions-home_content h4 {
+	margin-bottom: 5%;
+}
+
+#instructions-home_content h3 {
+	font-size: 15px;
+	font-family: Carrois Gothic SC;
+	margin-bottom: 2%;
+}
+
+#instructions-one_content h2 {
+	margin-bottom: 10%;
+	font-size: 40px;
+}
+
+#instructions-one_content h3{
+	font-size: 15px;
+	margin-bottom: 3%;
+	display: inline-block;
+}
+
+#instructions-one_content h4{
+	display: inline-block;
+}
+
+.ui-li {
+	border: none;
+}
+
+.ui-focus, .ui-btn:focus {
+    box-shadow: none;
+}
+
+.ui-field-contain .ui-select {
+	width: 50%;
+}
+
+#notes_content form {
+	margin-bottom: 20px;
+}
+
+#notes_content input {
+	color: gray;
+}
+
+#notes_content li {
+	/*font-family: verdana;*/
+}
+
+#new-note-title_content {
+	text-align: center;
+}
+
+#new-note-title_content h2 {
+	margin-top: 25%;
+	font-size: 50px;
+	font-family: Oswald;
+}
+
+#new-note-title_content input {
+	width: 80%;
+	margin-right: auto;
+	margin-left: auto;
+	color: gray;
+	margin-bottom: 20px;
+}
+
+#new-note-title_content a {
+	width: 50%;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+#editor_content label {
+	font-size: 15px;
+	color: gray;
+}
+
+#editor_content a {
+	font-size: 12px;
+	color: black;
+}
+
+#editor_content .button-layout {
+	margin: -1px;
+	width: 90%;
+}
+
+#editor_content a .ui-link-inherit {
+	display:block;
+}
+
+#editor_content .ui-popup-container {
+	z-index: 1;
+}
+
+#editor_content .ui-controlgroup-controls {
+	width: 80%;
+	text-align: left;
+}
+
+#editor_content .ui-btn {
+	width:30%;
+}
+
+#editor_content .inline-buttons{
+	margin-top: 20px;
+	width: 30%;
+	display: inline-block;
+	margin-left: 10px;
+}
+
+#note-text {
+	width: 80%;
+}
+
+.ui-li .ui-btn-inner a.ui-link-inherit, .ui-li-static.ui-li {
+	padding: 5px;
+}
+
+#note-text {
+	color: gray;
+}
+
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px) and (orientation:portrait) {
+
+	#home_content input {
+		width: 100%;
+	}
+
+	.ui-field-contain .ui-select {
+		width: 100%;
+	}
+
+	#editor_content .button-group {
+	margin-right: 10px;
+	width: 100%;
+}
+}
+
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px) and (orientation:landscape) {
+
+	#home_content input {
+		width: 50%;
+	}
+}

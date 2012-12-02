@@ -5,7 +5,6 @@ var passportLocalMongoose = require('passport-local-mongoose');
 var User = new Schema({
     files: Array,
     lastLoginTimestamp: Date,
-    lastCommitTimestamp: Date,
 });
 
 User.plugin(passportLocalMongoose); //adds username, password to schema
