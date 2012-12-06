@@ -1,33 +1,29 @@
 var path = require('path');
 var express = require('express');
 var http = require('http');
+var mongo = require('mongodb');
 var mongoose = require('mongoose');
-var passport = require('passport');
 var util = require('util');
-var LocalStrategy = require('passport-local').Strategy;
-var GoogleStrategy = require('passport-google').Strategy;
 var app = express();
-// var port = process.env.PORT || 8080;
+var port = process.env.PORT || 3000;
 // var DOMParser = require('xmldom').DOMParser;
 
 function init(){
-   
-    var User = initPassportUser();
 
     configureExpress(app);
 
+    var User = initUser();
+
     // mongoose.connect('mongodb://localhost/noteTaker');
 
-    // require('./loginRoutes')(app);
-
-    http.createServer(app).listen(3000, function() {
-        console.log("Express server listening on port %d", 3000);
+    http.createServer(app).listen(port, function() {
+        console.log("Express server listening on port %d", port);
     });
 }
 
 init();
 
-var db = mongoose.createConnection("mongodb://localhost/noteTaker")
+var db = mongoose.createConnection("mongodb://localhost/data")
 db.on("error", function(err) {
     	console.log("MongoDB connection error:", err);
 });
@@ -36,15 +32,15 @@ db.once("open", function() {
 	console.log("MongoDB connected");
 });
 
+// var mongoUri = process.env.MONGOLAB_URI || 
+//   process.env.MONGOHQ_URL || 
+//   'mongodb://localhost/data'; 
 
-
-// Config
-// app.configure(function () {
-//   app.use(express.bodyParser());
-//   app.use(express.methodOverride());
-//   app.use(allowCrossDomain);		// Our CORS mtitledleware
-//   app.use(app.router);
-//   app.use(express.errorHandler({ dumpExceptions: true, showStack: true }));
+// mongo.Db.connect(mongoUri, function (err, db) {
+//   db.collection('db', function(er, collection) {
+//     collection.insert({'mykey': 'myvalue'}, {safe: true}, function(er,rs) {
+//     });
+//   });
 // });
 
 function configureExpress(app){
@@ -55,8 +51,6 @@ function configureExpress(app){
     	app.use(express.bodyParser());
     	app.use(express.methodOverride());
     	app.use(express.session({secret:"keyboard cat"}));
-    	app.use(passport.initialize());
-    	app.use(passport.session());
     	app.use(express.static(path.join(__dirname, 'public')));
 
         //app.use(allowCrossDomain);
@@ -66,76 +60,14 @@ function configureExpress(app){
     });
 }
 
-function initPassportUser(){
-    var User = require('./User');
+function initUser() {
+	var User = new mongoose.Schema({
+		files: Array,
+		lastLoginTimestamp: Date,
+	});
 
-    passport.use(new LocalStrategy(User.authenticate()));
-
-    passport.serializeUser(User.serializeUser());
-    passport.deserializeUser(User.deserializeUser());
-
-    passport.use(new GoogleStrategy({
-		returnURL: "http://localhost:8080/auth/google/return",
-		realm: "http://localhost:8080/"
-		},
-		function(identifier, profile, done) {
-			process.nextTick(function() {
-				profile.identifier = identifier;
-				return done(null, profile);
-			});
-		}
-	));
-
-    return User;
+	User.add
 }
-
-app.get('/auth/google', passport.authenticate('google', {failureRedirect: "index.html"}),
-	function(req, res) {
-		console.log("in/auth/google");
-		res.redirect("/#notes");
-	});
-	
-app.get('/auth/google/return', 
-passport.authenticate('google', { successRedirect: '/#notes',
-                                  failureRedirect: '/login' }),
-function(req,res) {
-	console.log("in/auth/google/return");
-	res.redirect("/index.html");
-});
-								  
-app.get('/auth/google/return', function(req, res, next) {
-passport.authenticate('google', function(err, user, info) {
-	if (err) { return next(err); }
-	if (!user) { return res.redirect('/index.html'); }
-	req.logIn(user, function(err) {
-		if (err) { return next(err); }
-		var username = user.username;
-		
-		//google sends back unique identifiers so no two usernames will be the same
-		User.findOne({username : username }, function(err, existingUser) {
-        if (err){
-            return res.send({'err': err});
-        }
-		
-        if (existingUser) {
-			existingUser.lastLoginTimestamp = new Date();
-			existingUser.save();
-			return res.send('success');
-        }
-
-        else {
-		user.lastLoginTimestamp = new Date();
-        user.save(); 
-		}
-    });
-	});
-	})(req, res, next);
-});
-
-app.get('/logout', function(req, res) {
-    req.logout();
-    res.redirect('/index.html');
-});
 
 // CORS Mtitledleware that sends HTTP headers with every request
 // Allows connections from http://localhost:8081
@@ -149,7 +81,7 @@ var allowCrossDomain = function(req, res, next) {
 
 // Database
 // mongodb://host/dbname
-mongoose.connect('mongodb://localhost/noteTaker');
+mongoose.connect('mongodb://localhost/data');
 
 // New mongoose schema to create our Note model
 var Schema = mongoose.Schema;
@@ -161,6 +93,14 @@ var Note = new Schema({
 var NoteModel = db.model('Note', Note);
 
 // =========== ROUTES ==========
+
+app.get('/userid', function (req, res) {
+	console.log(req);
+})
+
+app.get('/', function (req, res) {
+	return res.send("hi");
+})
 
 // Get all notes
 app.get('/notes', function (req, res) {
@@ -365,8 +305,3 @@ app.get("http://fonts.googleapis.com/css?family=Oswald", function(request, respo
 app.get("http://fonts.googleapis.com/css?family=BenchNine|Julius+Sans+One|Archivo+Narrow|Carrois+Gothic+SC", function(request, response) {
                                 response.sendfile("http://fonts.googleapis.com/css?family=BenchNine|Julius+Sans+One|Archivo+Narrow|Carrois+Gothic+SC");
 });
-
-function ensureAuthenticated(req, res, next) {
-	if (req.isAuthenticated()) { return next();}
-	res.redirected('/index.html');
-}
