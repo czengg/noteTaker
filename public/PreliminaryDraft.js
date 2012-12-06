@@ -31,8 +31,12 @@ $.fn.extend({
 function setDimensions() {
   var windowHeight = $(window).height();
   var windowWidth = $(window).width();
+  var footerHeight = $(".footer").outerHeight();
+  var headerHeight = $(".header").outerHeight();
+  console.log($(".footer").height());
+  console.log($(".header"));
 
-  $(".content").each(function() {$(this).height(windowHeight);});
+  $(".content").each(function() {$(this).height(windowHeight-footerHeight-headerHeight);});
   $(".content").each(function() {$(this).width(windowWidth);});
 }
 
@@ -79,14 +83,16 @@ function insertNote(noteName) {
   btnDiv.appendTo(textBtnDiv);
 }
 
-
+function insertTitle() {
+  var title = $("#note-title").val();
+  $("#editor-note-title").html(title);
+}
 
 //create-notes page: insert tags
 function insertTag(tagName) {
 	var tag = "<" + tagName +"></" + tagName + ">";
 
 	$("#note-text").insertAtCaret(tag);
-
 }
 
 function insertType(tag, type) {
@@ -139,17 +145,15 @@ function checkAuth() {
 function handleAuthResult(authResult) {
   var authButton = document.getElementById('authorizeButton');
 
-  authButton.style.display = 'none';
-
   if (authResult && !authResult.error) {
     // Access token has been successfully retrieved, requests can be sent to the API.
-    // filePicker.style.display = 'block';
-    // filePicker.onchange = uploadFile;
+    console.log(gapi.client);
+    $.get("/userid", {});
+
   } else {
     // No access token could be retrieved, show the button to start the authorization flow.
-    authButton.style.display = 'block';
+    authButton.style.display = 'inline-block';
     authButton.onclick = function() {
-      console.log("clicked");
         gapi.auth.authorize(
             {'client_id': CLIENT_ID, 'scope': SCOPES, 'immediate': false},
             handleAuthResult);

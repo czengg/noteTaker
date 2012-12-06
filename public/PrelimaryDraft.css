@@ -2,7 +2,6 @@ h2 {
 	font-size: 50px;
 	font-family: Oswald;
 	margin-bottom: 2%;
-	margin-left: 1%;
 	margin-top: 2%;
 }
 
@@ -10,7 +9,12 @@ h4 {
 	font-size: 15px;
 	font-style: italic;
 	margin-bottom: 30px;
-	margin-left: 1%;
+}
+
+h3 {
+	font-size: 30px;
+	font-family: Carrois Gothic SC;
+	margin-bottom: 2%;
 }
 
 .ui-page-header-fullscreen .ui-content, .ui-page-footer-fullscreen .ui-content {
@@ -34,6 +38,7 @@ h4 {
 	min-height: 100%;
 }
 
+/*home sign in page*/
 #home_content {
 	text-align: center;
 }
@@ -56,6 +61,7 @@ h4 {
 	margin-left: 10px;
 }
 
+/*instructions-home about us*/
 #instructions-home_content h2 {
 	margin-bottom: 10%;
 	font-size: 40px;
@@ -66,11 +72,12 @@ h4 {
 }
 
 #instructions-home_content h3 {
-	font-size: 15px;
+	font-size: 20px;
 	font-family: Carrois Gothic SC;
 	margin-bottom: 2%;
 }
 
+/*instructions-one step by step*/
 #instructions-one_content h2 {
 	margin-bottom: 10%;
 	font-size: 40px;
@@ -86,6 +93,23 @@ h4 {
 	display: inline-block;
 }
 
+/*instructions-two guide to shortcuts*/
+#instructions-two h3 {
+	font-size: 18px;
+	margin-bottom: 1%;
+	display: inline-block;
+}
+
+#instructions-two h4 {
+	font-size:12px;
+	display: inline-block;
+	margin-bottom: 1%;
+}
+
+#instructions-two h2 {
+	margin-bottom: 4%;
+}
+
 .ui-li {
 	border: none;
 }
@@ -96,6 +120,40 @@ h4 {
 
 .ui-field-contain .ui-select {
 	width: 50%;
+}
+
+.tag-name.ui-block-a {
+	text-align: center;
+	width: 30%;
+	margin-bottom: 2%;
+}
+
+.tag-description.ui-block-b {
+	width: 70%;
+	margin-bottom: 2%;
+}
+
+.instructions-buttons .ui-block-a.tag-name h4{
+	font-family: Carrois Gothic SC;
+	font-size: 17px;
+	font-style: normal;
+}
+
+.instructions-buttons h4 {
+	display: inline-block;
+	margin-bottom: 1%;
+	font-family: Carrois Gothic SC;
+	font-style: normal;
+	font-size: 20px;
+}
+
+.instructions-buttons h2 {
+	display: inline-block;
+}
+
+.instructions-buttons .tag-description p {
+	font-size: 13px;
+	font-style: italic;
 }
 
 #notes_content form {
