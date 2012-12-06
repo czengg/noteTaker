@@ -95,7 +95,7 @@ app.get('/userid', function (req, res) {
 })
 
 app.get('/', function (req, res) {
-	return res.send();
+	return res.end('sucess');
 })
 
 // Get all notes
