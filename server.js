@@ -79,7 +79,7 @@ var allowCrossDomain = function(req, res, next) {
 
 // Database
 // mongodb://host/dbname
-mongoose.connect('mongodb://localhost/data');
+// mongoose.connect('mongodb://localhost/data');
 
 // New mongoose schema to create our Note model
 var Schema = mongoose.Schema;
