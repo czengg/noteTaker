@@ -19,7 +19,11 @@ function init(){
 
 init();
 
-var db = mongoose.createConnection("mongodb://localhost/data")
+var mongoUri = process.env.MONGOLAB_URI || 
+  process.env.MONGOHQ_URL || 
+  'mongodb://localhost/data'; 
+
+var db = mongoose.createConnection(mongoUri)
 db.on("error", function(err) {
     	console.log("MongoDB connection error:", err);
 });
@@ -28,9 +32,7 @@ db.once("open", function() {
 	console.log("MongoDB connected");
 });
 
-// var mongoUri = process.env.MONGOLAB_URI || 
-//   process.env.MONGOHQ_URL || 
-//   'mongodb://localhost/data'; 
+
 
 // mongo.Db.connect(mongoUri, function (err, db) {
 //   db.collection('db', function(er, collection) {
