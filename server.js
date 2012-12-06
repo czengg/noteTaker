@@ -68,7 +68,7 @@ function initUser() {
 // CORS Mtitledleware that sends HTTP headers with every request
 // Allows connections from http://localhost:8081
 var allowCrossDomain = function(req, res, next) {
-    res.header('Access-Control-Allow-Origin', 'http://localhost:8080');
+    res.header('Access-Control-Allow-Origin', 'http://rocky-earth-8065.herokuapp.com/');
     res.header('Access-Control-Allow-Methods', 'PUT,GET,POST,DELETE,OPTIONS');
     res.header('Access-Control-Allow-Headers', 'Content-Type,X-Requested-With');
 
