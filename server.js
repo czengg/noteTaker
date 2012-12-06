@@ -15,10 +15,6 @@ function init(){
     var User = initUser();
 
     // mongoose.connect('mongodb://localhost/noteTaker');
-
-    http.createServer(app).listen(port, function() {
-        console.log("Express server listening on port %d", port);
-    });
 }
 
 init();
@@ -99,7 +95,7 @@ app.get('/userid', function (req, res) {
 })
 
 app.get('/', function (req, res) {
-	return res.send("hi");
+	return res.send();
 })
 
 // Get all notes
