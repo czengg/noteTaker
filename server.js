@@ -294,7 +294,7 @@ function insertPiazzas(piazzas) {
 }
 
 // Launch server
-app.listen(8080);
+app.listen(port);
 
 app.get("http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css", function(request, response) {
                                 response.sendfile("http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css");
