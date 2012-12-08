@@ -95,6 +95,11 @@ function insertTag(tagName) {
 	$("#note-text").insertAtCaret(tag);
 }
 
+function insertHref(tag) {
+  var html = "<" + tag + " href='insert url here'" + "></" + tag + ">";
+  $("#note-text").insertAtCaret(html);
+}
+
 function insertType(tag, type) {
 	var html = "<" + tag + " type='" + type + "'></" + tag + ">";
 
