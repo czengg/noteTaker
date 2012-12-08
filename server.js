@@ -294,12 +294,3 @@ function insertPiazzas(piazzas) {
 // Launch server
 app.listen(port);
 
-app.get("http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css", function(request, response) {
-                                response.sendfile("http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css");
-});
-app.get("http://fonts.googleapis.com/css?family=Oswald", function(request, response) {
-                                response.sendfile("http://fonts.googleapis.com/css?family=Oswald");
-});
-app.get("http://fonts.googleapis.com/css?family=BenchNine|Julius+Sans+One|Archivo+Narrow|Carrois+Gothic+SC", function(request, response) {
-                                response.sendfile("http://fonts.googleapis.com/css?family=BenchNine|Julius+Sans+One|Archivo+Narrow|Carrois+Gothic+SC");
-});
