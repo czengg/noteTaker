@@ -77,69 +77,58 @@ var allowCrossDomain = function(req, res, next) {
     next();
 }
 
-// Database
-// mongodb://host/dbname
-// mongoose.connect('mongodb://localhost/data');
-
 // New mongoose schema to create our Note model
 var Schema = mongoose.Schema;
+var User = new Schema({
+
+});
 var Note = new Schema({
 	title: { type: String, required: true },
 	content: { type: String, required: true },
-	lastEdit: { type: Date, required: true }
 });
 var NoteModel = db.model('Note', Note);
 
+// Config
+app.configure(function () {
+  app.use(express.bodyParser());
+  app.use(express.methodOverride());
+  app.use(allowCrossDomain);		// Our CORS middleware
+  app.use(app.router);
+  app.use(express.errorHandler({ dumpExceptions: true, showStack: true }));
+});
+
 // =========== ROUTES ==========
 
-app.get('/userid', function (req, res) {
-	console.log(req);
-})
 
-app.get('/', function (req, res) {
-	return res.end('sucess');
-})
-
-// Get all notes
-app.get('/notes', function (req, res) {
-	return NoteModel.find(function(err, notes) {
-		return res.send(notes);
+// Get all files associated with a user
+app.get('/getFiles/:user', function (req, res) {
+	return NoteModel.find( {user: req.params.user}, function(err, notes) {
+		res.send(notes);
 	});
 });
 
-// Get a single note
-app.get('/notes/:title', function (req, res) {
-	var id = req.user.id;
-	var title = req.params.title;
-	var noteTitle = id + "." + title;
-	// pattern matches /notes/*
-	// given title is passed to req.params.title
-	return NoteModel.findById(noteTitle, function(err, note) {
+// Get a single note's contents
+app.get('/getContent/:title/:user', function (req, res) {
+	return NoteModel.find( {title: req.params.title, user: req.params.user}, function(err, note) {
 		res.send(note);
 	});
 });
 
 // Add a note
-app.post('/notes', function (req,res) {
+app.post('/add/:title/:user/:content', function (req,res) {
 	var note = new NoteModel({
-		title: req.user.id + "." + req.body.title,
+		title: req.body.title,
 		content: req.body.content,
-		lastEdit: req.body.lastEdit
+		user: req.body.user
 	});
 
-	var preview = xmlToHtml(note.content);
-
-	// useful so client gets server generated stuff like IDs
-	return res.send(preview);
+	note.save();
 });
 
 //view html preview of lecture note
-app.post('/preview', function (req,res) {
-	var note = new NoteModel({
-		desc: req.body.content
-	});
+app.post('/preview/:content', function (req,res) {
 
-	var preview = xmlToHtml(note.content);
+	var preview = xmlToHtml(req.body.content);
 
 	res.setHeader('Content-Type', 'text/html');
 
@@ -148,25 +137,18 @@ app.post('/preview', function (req,res) {
 });
 
 // Delete a note
-app.delete('/notes/:title', function(req, res) {
-	var id = req.user.id;
-	var title = req.params.title;
-	var noteTitle = id + "." + title;
-	return NoteModel.findById(noteTitle, function(err, note){
-		return note.remove(function(err) {
-			return res.send('');
-		});
-	});
+app.delete('/delete/:title/:user', function(req, res) {
+	return NoteModel.remove( {
+		query: { title: req.params.title, user: req.params.user}
+	})
 });
 
-// Editing a note
-app.put('/notes/:title', function(req, res) {
-	return NoteModel.findById(req.params.title, function(err, note) {
-		note.title = req.user.id + "." + req.body.title;
-		note.content = req.body.content;
-		note.save();
-		return res.send(note);
-	});
+// Edit a note's title
+app.put('/editContent/:title/:user/:content', function(req, res) {
+	return NoteModel.findAndModify( {
+		query: { title: req.params.title, user: req.params.user},
+		update: { content: req.params.content}
+	})
 });
 
 function xmlToHtml(xmlString) {
