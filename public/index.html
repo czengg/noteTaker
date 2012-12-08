@@ -1023,7 +1023,7 @@
 			<div data-role="controlgroup" data-type="horizontal" class="button-layout">
 
 				<!-- Sections Button -->
-				<a data-role="button" data-mini="true" class="button-text" data-rel="popup" href="#popup-section">
+				<a data-role="button" data-transition="pop" data-inline="true" data-position-to="window" data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span" data-theme="c" aria-haspopup="true" aria-owns="#popup-section" data-mini="true" class="button-text" data-rel="popup" href="#popup-section">
 					Section
 				</a>
 
@@ -1038,81 +1038,149 @@
 				</a>
 
 				<!-- Sections PopUp Box -->
-				<div id="popup-section-popup" class="ui-popup-container ui-selectmenu-hidden">
-					<div id="popup-section" class="ui-popup ui-body-a ui-overlay-shadow ui-corner-all" data-theme="d" data-role="popup" aria-disabled="false" data-disabled="false" data-shadow="true" data-corners="true" data-transition="none" data-position-to="origin">
-						<li class="ui-li ui-li-static ui-btn-up-a ui-corner-top" data-theme="d" data-role="divider">
-							Sections
-						</li>
-						<li class="ui-btn ui-li ui-focus ui-btn-up-d" data-corners="false" data-shadow="false" data-wrapperels="div" data-theme="d">
-							<div class="ui-btn-inner ui-li">
-								<a class="ui-link-inherit" onclick="insertTag('toc')" ontap="insertTag('toc')">&#60;toc&#62</a>
-							</div>
-						</li>
-						<li class="ui-btn ui-li ui-corner-bottom ui-li-last ui-btn-up-d" data-corners="false" data-shadow="false" data-wrapperels="div" data-theme="d">
-							<div class="ui-btn-inner ui-li">
-								<a class="ui-link-inherit" onclick="insertTag('review')" ontap="insertTag('review')">&#60;review&#62</a>
-							</div>
-						</li>
+				<div id="popup-section-popup" class="ui-popup-container pop in ui-popup-active ui-popup-hidden" tabindex="0">
+					<div data-dismissible="true" data-position-to="origin" data-transition="none" data-corners="true" data-shadow="true" data-disabled="false" aria-disabled="false" data-role="popup" id="popup-section" data-overlay-theme="a" data-theme="c" style="max-width:400px;" class="ui-corner-all ui-popup ui-body-c ui-overlay-shadow">
+						<div role="banner" data-role="header" data-theme="a" class="ui-corner-top ui-header ui-bar-a">
+							<h1 aria-level="1" role="heading" class="ui-title">Section</h1>
+						</div>
+						<div role="main" data-role="content" data-theme="d" class="ui-corner-bottom ui-content ui-body-d">
+							<h3 class="ui-title">Select the tag you'd like to use</h3>
+							<a class="ui-btn ui-btn-up-c ui-shadow ui-btn-corner-all ui-btn-inline" data-wrapperels="span" data-iconshadow="true" data-shadow="true" data-corners="true" href="#" data-role="button" data-inline="true" data-rel="back" data-theme="c">
+								<span class="ui-btn-inner">
+									<span class="ui-btn-text" onclick="insertTag('toc')" ontap="insertTag('toc')" data-mini="true">
+										&#60;toc&#62;
+									</span>
+								</span>
+							</a>    
+							<a class="ui-btn ui-btn-up-c ui-shadow ui-btn-corner-all ui-btn-inline" data-wrapperels="span" data-iconshadow="true" data-shadow="true" data-corners="true" href="#" data-role="button" data-inline="true" data-rel="back" data-theme="c">
+								<span class="ui-btn-inner">
+									<span class="ui-btn-text" onclick="insertTag('review')" ontap="insertTag('review')" data-mini="true">
+										&#60;review&#62;
+									</span>
+								</span>
+							</a>
+							<a class="ui-btn ui-btn-up-c ui-shadow ui-btn-corner-all ui-btn-inline" data-wrapperels="span" data-iconshadow="true" data-shadow="true" data-corners="true" href="#" data-role="button" data-inline="true" data-rel="back" data-theme="c">
+								<span class="ui-btn-inner">
+									<span class="ui-btn-text" data-mini="true">
+										Cancel
+									</span>
+								</span>
+							</a>
+						</div>
 					</div>
 				</div>
 
-				<!-- Reference PopUp Box -->
-				<div id="popup-reference-popup" class="ui-popup-container ui-selectmenu-hidden">
-					<div id="popup-reference" class="ui-popup ui-body-a ui-overlay-shadow ui-corner-all" data-theme="d" data-role="popup" aria-disabled="false" data-disabled="false" data-shadow="true" data-corners="true" data-transition="none" data-position-to="origin">
-						<li class="ui-li ui-li-static ui-btn-up-a ui-corner-top" data-theme="d" data-role="divider">
-							Links & Images
-						</li>
-						<li class="ui-btn ui-li ui-focus ui-btn-up-d" data-corners="false" data-shadow="false" data-wrapperels="div" data-theme="d">
-							<div class="ui-btn-inner ui-li">
-								<a class="ui-link-inherit" onclick="insertTag('piazza')" ontap="insertTag('piazza')">&#60;piazza&#62</a>
-							</div>
-						</li>
-						<li class="ui-btn ui-li ui-btn-up-d" data-corners="false" data-shadow="false" data-wrapperels="div" data-theme="d">
-							<div class="ui-btn-text ui-btn-inner ui-li">
-								<a class="ui-link-inherit" onclick="insertTag('autolab')" ontap="insertTab('autolab')">&#60;autolab&#62</a>
-							</div>
-						</li>
-						<li class="ui-btn ui-li ui-btn-up-d" data-corners="false" data-shadow="false" data-wrapperels="div" data-theme="d">
-							<div class="ui-btn-text ui-btn-inner ui-li">
-								<a class="ui-link-inherit">&#60;basecode&#62</a>
-							</div>
-						</li>
-						<li class="ui-btn ui-li ui-corner ui-btn-up-d" data-corners="false" data-shadow="false" data-wrapperels="div" data-theme="d">
-							<div class="ui-btn-text ui-btn-inner ui-li">
-								<a class="ui-link-inherit">&#60;general&#62</a>
-							</div>
-						</li>
-						<li class="ui-btn ui-li ui-corner-bottom ui-li-last ui-btn-up-d" data-corners="false" data-shadow="false" data-wrapperels="div" data-theme="d">
-							<div class="ui-btn-inner ui-li">
-								<a class="ui-link-inherit" onclick="insertTag('img')" ontap="insertTag('img')">&#60;img&#62</a>
-							</div>
-						</li>
+				<!-- Reference Popup Box -->
+				<div id="popup-reference-popup" class="ui-popup-container pop in ui-popup-active ui-popup-hidden" tabindex="0">
+					<div data-dismissible="true" data-position-to="origin" data-transition="none" data-corners="true" data-shadow="true" data-disabled="false" aria-disabled="false" data-role="popup" id="popup-reference" data-overlay-theme="a" data-theme="c" style="max-width:400px;" class="ui-corner-all ui-popup ui-body-c ui-overlay-shadow">
+						<div role="banner" data-role="header" data-theme="a" class="ui-corner-top ui-header ui-bar-a">
+							<h1 aria-level="1" role="heading" class="ui-title">Links & Images</h1>
+						</div>
+						<div role="main" data-role="content" data-theme="d" class="ui-corner-bottom ui-content ui-body-d">
+							<h3 class="ui-title">Select the tag you'd like to use</h3>
+							<a class="ui-btn ui-btn-up-c ui-shadow ui-btn-corner-all ui-btn-inline" data-wrapperels="span" data-iconshadow="true" data-shadow="true" data-corners="true" href="#" data-role="button" data-inline="true" data-rel="back" data-theme="c" data-mini="true">
+								<span class="ui-btn-inner">
+									<span class="ui-btn-text" onclick="insertTag('piazza')" ontap="insertTag('piazza')" data-mini="true">
+										&#60;piazza&#62;
+									</span>
+								</span>
+							</a>    
+							<a class="ui-btn ui-btn-up-c ui-shadow ui-btn-corner-all ui-btn-inline" data-wrapperels="span" data-iconshadow="true" data-shadow="true" data-corners="true" href="#" data-role="button" data-inline="true" data-rel="back" data-theme="c" data-mini="true">
+								<span class="ui-btn-inner">
+									<span class="ui-btn-text" onclick="insertTag('autolab')" ontap="insertTag('autolab')" data-mini="true">
+										&#60;autolab&#62;
+									</span>
+								</span>
+							</a>
+							<a class="ui-btn ui-btn-up-c ui-shadow ui-btn-corner-all ui-btn-inline" data-wrapperels="span" data-iconshadow="true" data-shadow="true" data-corners="true" href="#" data-role="button" data-inline="true" data-rel="back" data-theme="c" data-mini="true">
+								<span class="ui-btn-inner">
+									<span class="ui-btn-text" onclick="insertTag('basecode')" ontap="insertTag('basecode')" data-mini="true">
+										&#60;basecode&#62;
+									</span>
+								</span>
+							</a>
+							<a class="ui-btn ui-btn-up-c ui-shadow ui-btn-corner-all ui-btn-inline" data-wrapperels="span" data-iconshadow="true" data-shadow="true" data-corners="true" href="#" data-role="button" data-inline="true" data-rel="back" data-theme="c" data-mini="true">
+								<span class="ui-btn-inner">
+									<span class="ui-btn-text" onclick="insertTag('link')" ontap="insertTag('link')" >
+										&#60;link&#62;
+									</span>
+								</span>
+							</a>
+							<a class="ui-btn ui-btn-up-c ui-shadow ui-btn-corner-all ui-btn-inline" data-wrapperels="span" data-iconshadow="true" data-shadow="true" data-corners="true" href="#" data-role="button" data-inline="true" data-rel="back" data-theme="c" data-mini="true">
+								<span class="ui-btn-inner">
+									<span class="ui-btn-text" onclick="insertTag('img')" ontap="insertTag('img')">
+										&#60;img&#62;
+									</span>
+								</span>
+							</a>
+							<a class="ui-btn ui-btn-up-c ui-shadow ui-btn-corner-all ui-btn-inline" data-wrapperels="span" data-iconshadow="true" data-shadow="true" data-corners="true" href="#" data-role="button" data-inline="true" data-rel="back" data-theme="c">
+								<span class="ui-btn-inner">
+									<span class="ui-btn-text" data-mini="true">
+										Cancel
+									</span>
+								</span>
+							</a>
+						</div>
 					</div>
 				</div>
 
-				<!-- Breaks & New Sections -->
-				<div id="popup-break-popup" class="ui-popup-container ui-selectmenu-hidden">
-					<div id="popup-break" class="ui-popup ui-body-a ui-overlay-shadow ui-corner-all" data-theme="d" data-role="popup" aria-disabled="false" data-disabled="false" data-shadow="true" data-corners="true" data-transition="none" data-position-to="origin">
-						<li class="ui-li ui-li-static ui-btn-up-a ui-corner-top" data-theme="d" data-role="divider">
-							Breaks
-						</li>
-						<li class="ui-btn ui-li ui-focus ui-btn-up-d" data-corners="false" data-shadow="false" data-wrapperels="div" data-theme="d">
-							<div class="ui-btn-inner ui-li">
-								<a class="ui-link-inherit" onclick="insertTag('br')" ontap="insertTag('br')">&#60;br&#62</a>
-							</div>
-						</li>
-						<li class="ui-btn ui-li ui-btn-up-d" data-corners="false" data-shadow="false" data-wrapperels="div" data-theme="d">
-							<div class="ui-btn-text ui-btn-inner ui-li">
-								<a class="ui-link-inherit" onclick="insertTag('pbr')" ontap="insertTag('pbr')">&#60;pbr&#62</a>
-							</div>
-						</li>
-						<li class="ui-btn ui-li ui-corner-bottom ui-li-last ui-btn-up-d" data-corners="false" data-shadow="false" data-wrapperels="div" data-theme="d">
-							<div class="ui-btn-inner ui-li">
-								<a class="ui-link-inherit" onclick="insertTag('section')" ontap="insertTag('section')">&#60;section&#62</a>
-							</div>
-						</li>
+				<!-- Breaks -->
+				<div id="popup-break-popup" class="ui-popup-container pop in ui-popup-active ui-popup-hidden" tabindex="0">
+					<div data-dismissible="true" data-position-to="origin" data-transition="none" data-corners="true" data-shadow="true" data-disabled="false" aria-disabled="false" data-role="popup" id="popup-break" data-overlay-theme="a" data-theme="c" style="max-width:400px;" class="ui-corner-all ui-popup ui-body-c ui-overlay-shadow">
+						<div role="banner" data-role="header" data-theme="a" class="ui-corner-top ui-header ui-bar-a">
+							<h1 aria-level="1" role="heading" class="ui-title">Breaks</h1>
+						</div>
+						<div role="main" data-role="content" data-theme="d" class="ui-corner-bottom ui-content ui-body-d">
+							<h3 class="ui-title">Select the tag you'd like to use</h3>
+							<a class="ui-btn ui-btn-up-c ui-shadow ui-btn-corner-all ui-btn-inline" data-wrapperels="span" data-iconshadow="true" data-shadow="true" data-corners="true" href="#" data-role="button" data-inline="true" data-rel="back" data-theme="c" data-mini="true">
+								<span class="ui-btn-inner">
+									<span class="ui-btn-text" onclick="insertTag('br')" ontap="insertTag('br')" data-mini="true">
+										&#60;br&#62;
+									</span>
+								</span>
+							</a>    
+							<a class="ui-btn ui-btn-up-c ui-shadow ui-btn-corner-all ui-btn-inline" data-wrapperels="span" data-iconshadow="true" data-shadow="true" data-corners="true" href="#" data-role="button" data-inline="true" data-rel="back" data-theme="c" data-mini="true">
+								<span class="ui-btn-inner">
+									<span class="ui-btn-text" onclick="insertTag('pbr')" ontap="insertTag('pbr')" data-mini="true">
+										&#60;pbr&#62;
+									</span>
+								</span>
+							</a>
+							<a class="ui-btn ui-btn-up-c ui-shadow ui-btn-corner-all ui-btn-inline" data-wrapperels="span" data-iconshadow="true" data-shadow="true" data-corners="true" href="#" data-role="button" data-inline="true" data-rel="back" data-theme="c" data-mini="true">
+								<span class="ui-btn-inner">
+									<span class="ui-btn-text" onclick="insertTag('basecode')" ontap="insertTag('basecode')" data-mini="true">
+										&#60;basecode&#62;
+									</span>
+								</span>
+							</a>
+							<a class="ui-btn ui-btn-up-c ui-shadow ui-btn-corner-all ui-btn-inline" data-wrapperels="span" data-iconshadow="true" data-shadow="true" data-corners="true" href="#" data-role="button" data-inline="true" data-rel="back" data-theme="c" data-mini="true">
+								<span class="ui-btn-inner">
+									<span class="ui-btn-text" onclick="insertTag('link')" ontap="insertTag('link')" >
+										&#60;link&#62;
+									</span>
+								</span>
+							</a>
+							<a class="ui-btn ui-btn-up-c ui-shadow ui-btn-corner-all ui-btn-inline" data-wrapperels="span" data-iconshadow="true" data-shadow="true" data-corners="true" href="#" data-role="button" data-inline="true" data-rel="back" data-theme="c" data-mini="true">
+								<span class="ui-btn-inner">
+									<span class="ui-btn-text" onclick="insertTag('img')" ontap="insertTag('img')">
+										&#60;img&#62;
+									</span>
+								</span>
+							</a>
+							<a class="ui-btn ui-btn-up-c ui-shadow ui-btn-corner-all ui-btn-inline" data-wrapperels="span" data-iconshadow="true" data-shadow="true" data-corners="true" href="#" data-role="button" data-inline="true" data-rel="back" data-theme="c">
+								<span class="ui-btn-inner">
+									<span class="ui-btn-text" data-mini="true">
+										Cancel
+									</span>
+								</span>
+							</a>
+						</div>
 					</div>
 				</div>
+
+
+				
+				
 			</div> 
 
 			
