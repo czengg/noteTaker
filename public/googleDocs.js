@@ -27,6 +27,8 @@ function getId(authResult) {
     type: 'GET'
   }).done(function(res) {
     window.userId = res.id;
+    console.log(window.userId);
+    getNotes();
   });
   
 }
@@ -45,7 +47,7 @@ function handleAuthResult(authResult) {
     $("#logOutButton").css("display","inline-block");
     console.log(gapi);
     getId(authResult);
-    getNotes();
+
   } else {
     // No access token could be retrieved, show the button to start the authorization flow.
     authButton.css('inline-block');

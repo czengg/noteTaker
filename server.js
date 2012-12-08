@@ -137,8 +137,8 @@ app.get('/add', function (req,res) {
 		}
 		else
 		{
-			console.log("success");
-			res.send("success");
+			console.log(note);
+			res.send(note);
 		}
 	})
 
