@@ -24,14 +24,15 @@ function checkAuth() {
  * @param {Object} authResult Authorization result.
  */
 function handleAuthResult(authResult) {
-  var authButton = document.getElementById('authorizeButton');
+  var authButton = $('#authorizeButton');
 
   if (authResult && !authResult.error) {
     // Access token has been successfully retrieved, requests can be sent to the API.
-    authButton.text = "Log me out";
+    authButton.css("display","none");
+    $("#logOutButton").css("display","inline-block");
   } else {
     // No access token could be retrieved, show the button to start the authorization flow.
-    authButton.style.display = 'inline-block';
+    authButton.css('inline-block');
     authButton.onclick = function() {
         gapi.auth.authorize(
             {'client_id': CLIENT_ID, 'scope': SCOPES, 'immediate': false},
