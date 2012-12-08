@@ -161,6 +161,10 @@ h3 {
 	font-style: italic;
 }
 
+.ui-page-header-fullscreen .ui-content, .ui-page-footer-fullscreen .ui-content {
+	padding: 2%;
+}
+
 #notes_content form {
 	margin-bottom: 20px;
 }
@@ -170,7 +174,11 @@ h3 {
 }
 
 #notes_content li {
-	/*font-family: verdana;*/
+	margin-left: 10px;
+}
+
+#notes_content h2, h4 {
+	margin-left: 10px;
 }
 
 #new-note-title_content {
