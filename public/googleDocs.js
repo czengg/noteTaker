@@ -33,11 +33,12 @@ function handleAuthResult(authResult) {
   } else {
     // No access token could be retrieved, show the button to start the authorization flow.
     authButton.css('inline-block');
-    authButton.onclick = function() {
+    authButton.click(function() {
         gapi.auth.authorize(
             {'client_id': CLIENT_ID, 'scope': SCOPES, 'immediate': false},
             handleAuthResult);
-    };
+    });
+    
   }
 }
 
