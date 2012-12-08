@@ -120,4 +120,17 @@ function storeLocally() {
   }
 }
 
+// calls server
+// function saveNote() {
+//   $.ajax({
+//     url: '/add',
+//     data: {
+//       title: $("#note-title").val(),
+//       user: "",
+//       content: $("note-text").val()
+//     }
+
+//   }
+//     )
+// }
 

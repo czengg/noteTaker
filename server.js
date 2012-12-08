@@ -4,6 +4,9 @@ var http = require('http');
 var mongo = require('mongodb');
 var mongoose = require('mongoose');
 var util = require('util');
+var fs = require('fs');
+var querystring = require('querystring');
+var url = require('url');
 var app = express();
 var port = process.env.PORT || 3000;
 // var DOMParser = require('xmldom').DOMParser;
@@ -79,14 +82,16 @@ var allowCrossDomain = function(req, res, next) {
 
 // New mongoose schema to create our Note model
 var Schema = mongoose.Schema;
-var User = new Schema({
+var Collection = mongoose.Collection;
 
-});
 var Note = new Schema({
 	title: { type: String, required: true },
 	content: { type: String, required: true },
+	user: { type: String, required: true}
 });
 var NoteModel = db.model('Note', Note);
+
+
 
 // Config
 app.configure(function () {
@@ -97,38 +102,54 @@ app.configure(function () {
   app.use(express.errorHandler({ dumpExceptions: true, showStack: true }));
 });
 
-// =========== ROUTES ==========
-
 
 // Get all files associated with a user
-app.get('/getFiles/:user', function (req, res) {
-	return NoteModel.find( {user: req.params.user}, function(err, notes) {
+app.get('/getFiles', function (req, res) {
+	var query = url.parse(req.url);
+	var args = querystring.parse(query.query);
+	return NoteModel.find( {user: args.user}, function(err, notes) {
 		res.send(notes);
 	});
 });
 
 // Get a single note's contents
-app.get('/getContent/:title/:user', function (req, res) {
-	return NoteModel.find( {title: req.params.title, user: req.params.user}, function(err, note) {
+app.get('/getContent', function (req, res) {
+	var query = url.parse(req.url);
+	var args = querystring.parse(query.query);
+	return NoteModel.find( {title: args.title, user: args.user}, function(err, note) {
 		res.send(note);
 	});
 });
 
 // Add a note
-app.post('/add/:title/:user/:content', function (req,res) {
+app.get('/add', function (req,res) {
+	var query = url.parse(req.url);
+	var args = querystring.parse(query.query);
 	var note = new NoteModel({
-		title: req.body.title,
-		content: req.body.content,
-		user: req.body.user
+		title: args.title,
+		content: args.content,
+		user: args.user
 	});
 
-	note.save();
+	note.save(function(err) {
+		if(err) {
+			res.send(err);
+		}
+		else
+		{
+			res.send();
+		}
+	})
+
 });
 
 //view html preview of lecture note
-app.post('/preview/:content', function (req,res) {
+app.get('/preview', function (req,res) {
 
-	var preview = xmlToHtml(req.body.content);
+	var query = url.parse(req.url);
+	var args = querystring.parse(query.query);
+
+	var preview = xmlToHtml(args.content);
 
 	res.setHeader('Content-Type', 'text/html');
 
@@ -137,19 +158,25 @@ app.post('/preview/:content', function (req,res) {
 });
 
 // Delete a note
-app.delete('/delete/:title/:user', function(req, res) {
+app.get('/delete', function(req, res) {
+
+	var query = url.parse(req.url);
+	var args = querystring.parse(query.query);
 	return NoteModel.remove( {
-		query: { title: req.params.title, user: req.params.user}
+		query: { title: args.title, user: args.user}
 	})
 });
 
 // Edit a note's title
-app.put('/editContent/:title/:user/:content', function(req, res) {
+app.get('/editContent', function(req, res) {
+	var query = url.parse(req.url);
+	var args = querystring.parse(query.query);
 	return NoteModel.findAndModify( {
-		query: { title: req.params.title, user: req.params.user},
-		update: { content: req.params.content}
+		query: { title: args.title, user: args.user},
+		update: { content: args.content}
 	})
 });
+
 
 function xmlToHtml(xmlString) {
 	var doc = new DOMParser().parseFromString(xmlString);
