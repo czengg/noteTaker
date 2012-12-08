@@ -184,6 +184,18 @@ h3 {
 	margin-left: 10px;
 }
 
+#notes_content {
+	text-align: center;
+}
+
+#notes_content a {
+	margin-top: 20px;
+	width: 30%;
+	display: inline-block;
+	margin-left: 10px;
+	margin-bottom: 25%;
+}
+
 #new-note-title_content {
 	text-align: center;
 }

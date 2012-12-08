@@ -941,35 +941,17 @@
 			<h2>My Notes</h2>
 			<h4>Simply click on the note to edit or create a new note!</h4>
 
-			<ul data-role="listview" data-filter="true" data-filter-placeholder="Search notes..." class="ui-listview" id="notes-list">
-				<li data-role="list-divider" role="heading" class="ui-li ui-li-divider ui-bar-d" id="local-storage">Notes</li>
+			<div id="list_container">
 
-				<div id="notesList">
+			</div>
 
-				</div>
+			<!-- Create a note Button -->
+			<a class="ui-input-text ui-body-c ui-corner-all ui-mini" data-role="button" data-mini="true" href-"#new-note-title">Create a note</a>
 
-				<li data-role="list-divider" role="heading" class="ui-li ui-li-divider ui-bar-d">Start Anew</li>
+			<!-- Upload your own Button -->
+			<a class="ui-input-text ui-body-c ui-corner-all ui-mini" href="#new-note-title" data-role="button" data-mini="true">Upload your own</a>
 
-				<div id="not-stored">
-					<li data-corners="false" data-shadow="false" data-iconshadow="true" data-wrapperels="div" data-icon="arrow-r" data-iconpos="right" class="ui-btn ui-btn-icon-right ui-li-has-arrow ui-li" data-theme="d">
-						<div class="ui-btn-inner ui-li">
-							<div class="ui-btn-text">
-								<a href="#new-note-title" class="ui-link-inherit">Create a note</a>
-							</div>
-							<span class="ui-icon ui-icon-arrow-r ui-icon-shadow">&nbsp;</span>
-						</div>
-					</li>
 
-					<li data-corners="false" data-shadow="false" data-iconshadow="true" data-wrapperels="div" data-icon="arrow-r" data-iconpos="right" class="ui-btn ui-btn-icon-right ui-li-has-arrow ui-li" data-theme="d">
-						<div class="ui-btn-inner ui-li">
-							<div class="ui-btn-text">
-								<a href="#new-note-title" class="ui-link-inherit">Upload your own</a>
-							</div>
-							<span class="ui-icon ui-icon-arrow-r ui-icon-shadow">&nbsp;</span>
-						</div>
-					</li>
-				</div>
-			</ul>
 		</div>
 
 		<!-- footer -->
@@ -1499,7 +1481,7 @@
 				<textarea name="textarea" id="note-text">&#60;note&#62;&#60;/note&#62;</textarea>
 			</div>
 
-			<a class="ui-input-text ui-body-c ui-corner-all ui-mini inline-buttons" data-role="button" data-mini="true" onclick="storeLocally()" ontap="storeLocally()" id="save-button">Save</a>
+			<a class="ui-input-text ui-body-c ui-corner-all ui-mini inline-buttons" data-role="button" data-mini="true" onclick="saveNote()" ontap="saveNote()" id="save-button">Save</a>
 			
 			<a class="ui-input-text ui-body-c ui-corner-all ui-mini inline-buttons" href="#preview" data-role="button" data-mini="true">Preview</a>	
 		</div>

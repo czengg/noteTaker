@@ -8,7 +8,7 @@ var fs = require('fs');
 var querystring = require('querystring');
 var url = require('url');
 var app = express();
-var port = process.env.PORT || 3000;
+var port = process.env.PORT || 8080;
 // var DOMParser = require('xmldom').DOMParser;
 
 function init(){
@@ -137,7 +137,8 @@ app.get('/add', function (req,res) {
 		}
 		else
 		{
-			res.send();
+			console.log("success");
+			res.send("success");
 		}
 	})
 
