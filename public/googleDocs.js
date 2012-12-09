@@ -137,56 +137,27 @@ function saveNote() {
 function populateNotesFolder(array) {
 
   var list = $("<ul data-role='listview' id='notesList'></ul>");
+  window.titleSet = {};
 
 
   for(var i=0; i<array.length; i++) {
 
     var note = array[i];
+    console.log(note);
+    console.log(i);
 
-    
+    window.titleSet[note.title] = note.content;
 
     var listElement = $("<li style='height:60px'></li>");
-    // listElement.attr("data-corners","false");
-    // listElement.attr("data-shadows","false");
-    // listElement.attr("data-iconshadow","true");
-    // listElement.attr("data-wrapperels","div");
-    // listElement.attr("data-icon","arrow-r");
-    // listElement.attr("data-iconpos","right");
-    // listElement.attr("class","ui-btn ui-btn-icon-right ui-li-has-arrow ui-li");
-    // listElement.attr("data-theme","d");
-
-    // var divOuterElement = $("<div></div>");
-    // // divOuterElement.attr("class","ui-btn-inner ui-li");
-
-    // var divInnerElement = $("<div></div>");
-    // divInnerElement.attr("class","ui-btn-text");
-    // divInnerElement.appendTo(divOuterElement);
 
     var linkElement = $("<a></a>");
-    // linkElement.attr("class","ui-link-inherit");
-    linkElement.click(function(note) {
-                                          return function() {
-                                              populateEditor(note);
-                                          }
-                                        }(note));
-    linkElement.bind("touch",function(note) {
-                                                  return function() {
-                                                    populateEditor(note);
-                                                  }
-                                                }(note));
-    linkElement.text(note.title);
-    // linkElement.appendTo(divInnerElement);
+    listElement.attr('onclick', 'populateEditor("'+note.title+'")');
+    linkElement.html(note.title);
     linkElement.appendTo(listElement);
-
-    // var spanElement = $("<span></span>");
-    // spanElement.attr("class","ui-icon ui-icon-arrow-r ui-icon-shadow");
-    // spanElement.val('&nbsp;');
-    // spanElement.appendTo(divOuterElement);
-
-    // divOuterElement.appendTo(listElement);
 
     listElement.appendTo(list);
   }
+  console.log(window.titleSet);
 
   $("#list_container").append(list);
 }
@@ -198,8 +169,21 @@ function refresh() {
   $("#notesList").listview('refresh');
 }
 
-function populateEditor(note) {
-  $("#note-text").val(note.content);
+function insertTitle() {
+  var title = $("#note-title").val();
+
+  if(title in window.titleSet) {
+    alert("This note title already exists!");
+  }
+  else {
+    $("#editor-note-title").html(title);
+    $.mobile.changePage("#editor");
+  }
+}
+
+function populateEditor(title) {
+  $("#note-text").val(window.titleSet[title]);
+  $("#editor-note-title").text(title);
   $.mobile.changePage("#editor");
 }
 
@@ -213,7 +197,16 @@ function getNotes() {
     console.log(res);
     populateNotesFolder(res);
   });
+}
 
+function deleteNote() {
+  $.ajax({
+    url: '/delete',
+    data: {
+      user: window.userId,
+      title: $("note-title").val()
+    }
+  });
 }
 
 handleAuthResult();

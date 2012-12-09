@@ -29,13 +29,13 @@
 			<h4>This app uses your Google account to store documents directly in Google Drive. Proceed by clicking "Log Me In" which will prompt you to sign in with your Google account... For more detailed instructions, click "Step Zero"</h4>
 
 			<!-- Sign In Button -->
-			<a class="ui-input-text ui-body-c ui-corner-all ui-mini" data-role="button" data-mini="true" id="authorizeButton">Log me in</a>
+			<a data-inline="true" data-role="button" data-mini="true" id="authorizeButton">Log me in</a>
 
 			<!-- Sign Out Button -->
-			<a class="ui-input-text ui-body-c ui-corner-all ui-mini" data-role="button" data-mini="true" id="logOutButton">Log me out</a>
+			<a data-inline="true" data-role="button" data-mini="true" id="logOutButton">Log me out</a>
 
-			<!-- Sign Up Button -->
-			<a class="ui-input-text ui-body-c ui-corner-all ui-mini" href="#instructions-home" data-role="button" data-mini="true">Guide</a>
+			<!-- Guide Button -->
+			<a data-inline="true" href="#instructions-home" data-role="button" data-mini="true">Guide</a>
 		</div>
 
 		<!-- footer -->
@@ -976,7 +976,7 @@
 
 			<input type="text" name="name" id="note-title" value="" placeholder="Your note title"/>
 
-			<a class="ui-input-text ui-body-c ui-corner-all ui-mini" data-role="button" data-mini="true" onclick="insertTitle()" ontap="insertTitle()" href="#editor">I'm ready</a>
+			<a class="ui-input-text ui-body-c ui-corner-all ui-mini" data-role="button" data-mini="true" onclick="insertTitle()" ontap="insertTitle()">I'm ready</a>
 		</div>
 
 		<!-- footer -->
@@ -1005,7 +1005,7 @@
 			<div data-role="controlgroup" data-type="horizontal" class="button-layout">
 
 				<!-- Sections Button -->
-				<a data-role="button" data-transition="pop" data-inline="true" data-position-to="window" data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span" data-theme="c" aria-haspopup="true" aria-owns="#popup-section" data-mini="true" class="button-text" data-rel="popup" href="#popup-section">
+				<a data-role="button" data-mini="true" class="button-text" data-rel="popup" href="#popup-section">
 					Section
 				</a>
 
@@ -1020,10 +1020,10 @@
 				</a>
 
 				<!-- Sections PopUp Box -->
-				<div id="popup-section-popup" class="ui-popup-container pop in ui-popup-active ui-popup-hidden" tabindex="0">
-					<div data-dismissible="true" data-position-to="origin" data-transition="none" data-corners="true" data-shadow="true" data-disabled="false" aria-disabled="false" data-role="popup" id="popup-section" data-overlay-theme="a" data-theme="c" style="max-width:400px;" class="ui-corner-all ui-popup ui-body-c ui-overlay-shadow">
-						<div role="banner" data-role="header" data-theme="a" class="ui-corner-top ui-header ui-bar-a">
-							<h1 aria-level="1" role="heading" class="ui-title">Section</h1>
+				<div id="popup-section-popup">
+					<div data-role="popup" id="popup-section"  style="max-width:400px;">
+						<div role="banner" data-role="header">
+							<h1 role="heading" >Section</h1>
 						</div>
 						<div role="main" data-role="content" data-theme="d" class="ui-corner-bottom ui-content ui-body-d">
 							<h3 class="ui-title">Select the tag you'd like to use</h3>
@@ -1481,9 +1481,13 @@
 				<textarea name="textarea" id="note-text">&#60;note&#62;&#60;/note&#62;</textarea>
 			</div>
 
-			<a class="ui-input-text ui-body-c ui-corner-all ui-mini inline-buttons" data-role="button" data-mini="true" onclick="saveNote()" ontap="saveNote()" id="save-button">Save</a>
-			
-			<a class="ui-input-text ui-body-c ui-corner-all ui-mini inline-buttons" href="#preview" data-role="button" data-mini="true">Preview</a>	
+			<div class="button-controls">
+				<a onclick="deleteNote()" ontap="deleteNote()" data-theme="e" data-role="button" data-mini="true" data-inline="true">Delete</a>	
+
+				<a data-theme="b" data-role="button" data-mini="true" onclick="saveNote()" ontap="saveNote()" id="save-button" data-inline="true">Save</a>
+				
+				<a href="#preview" data-theme="a" data-role="button" data-mini="true" data-inline="true">Preview</a>	
+			</div>
 		</div>
 
 		<!-- footer -->

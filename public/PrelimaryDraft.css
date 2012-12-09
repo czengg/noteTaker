@@ -227,13 +227,16 @@ h3 {
 
 #editor_content a {
 	font-size: 12px;
-	color: black;
 }
 
 #editor_content .button-layout {
 	margin: -1px;
 	width: 100%;
 	margin-left: 10px;
+}
+
+#editor_content .button-controls a{
+	margin: 3px;
 }
 
 #editor_content a .ui-link-inherit {
@@ -245,7 +248,7 @@ h3 {
 }
 
 #editor_content .ui-controlgroup-controls {
-	width: 80%;
+	width: 100%;
 	text-align: left;
 }
 
@@ -255,7 +258,7 @@ h3 {
 
 #editor_content .inline-buttons{
 	margin-top: 20px;
-	width: 30%;
+	width: 33%;
 	display: inline-block;
 	margin-left: 10px;
 }
