@@ -244,6 +244,10 @@ h3 {
 	width: 28%;
 }
 
+#editor_content .button-controls {
+	text-align: center;
+}
+
 #editor_content a .ui-link-inherit {
 	display:block;
 }
