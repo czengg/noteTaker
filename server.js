@@ -103,11 +103,9 @@ app.get('/getFiles', function (req, res) {
 });
 
 // Get a single note's contents
-app.get('/getContent', function (req, res) {
-	var query = url.parse(req.url);
-	var args = querystring.parse(query.query);
-	return NoteModel.find( {title: args.title, user: args.user}, function(err, note) {
-		res.send(note);
+app.post('/getContent', function (req, res) {
+	NoteModel.findOne( {_id: req.body.id}, {content: 1}, function(err, content) {
+		res.send(content);
 	});
 });
 
@@ -136,7 +134,7 @@ app.get('/add', function (req,res) {
 
 //view html preview of lecture note
 app.post('/preview', function (req,res) {
-	console.log(req.body.content);
+
 	foundError = false;
 
 	xmlToHtml(req.body.content, res);
@@ -145,22 +143,47 @@ app.post('/preview', function (req,res) {
 
 // Delete a note
 app.get('/delete', function(req, res) {
-
 	var query = url.parse(req.url);
 	var args = querystring.parse(query.query);
-	return NoteModel.remove( {
-		query: { title: args.title, user: args.user}
-	})
+
+	NoteModel.findOne( { _id: args.id} , 
+		function(err, note)
+		{
+			console.log(args.id);
+			console.log(note);
+			note.remove(function(err) {
+				if(err) {
+					res.send(err);
+				}
+				else
+				{
+					console.log(note);
+					res.send(note);
+				}
+			})
+		}
+		
+	);
 });
 
 // Edit a note's title
-app.get('/editContent', function(req, res) {
-	var query = url.parse(req.url);
-	var args = querystring.parse(query.query);
-	return NoteModel.findAndModify( {
-		query: { title: args.title, user: args.user},
-		update: { content: args.content}
-	})
+app.post('/editContent', function(req, res) {
+	NoteModel.findOne( { _id: req.body.id} , 
+		function(err, note)
+		{
+			note.content = req.body.content;
+			note.save(function(err) {
+				if(err) {
+					res.send(err);
+				}
+				else
+				{
+					res.send(note);
+				}
+			})
+		}
+		
+	);
 });
 
 

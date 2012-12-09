@@ -27,7 +27,6 @@ function getId(authResult) {
     type: 'GET'
   }).done(function(res) {
     window.userId = res.id;
-    console.log(window.userId);
     getNotes();
   });
   
@@ -47,7 +46,7 @@ function handleAuthResult(authResult) {
     $("#logOutButton").css("display","inline-block");
     console.log(gapi);
     getId(authResult);
-
+    enableButtons();
   } else {
     // No access token could be retrieved, show the button to start the authorization flow.
     authButton.css('inline-block');
@@ -123,14 +122,38 @@ function insertFile(fileData, callback) {
 
 // calls to our server
 // calls server
-function saveNote() {
+function addNote() {
   $.ajax({
     url: '/add',
     data: {
       title: $("#note-title").val(),
       user: window.userId,
-      content: $("#note-text").val()
+      content: "<note></note>"
     }
+  }).done(function(note) {
+      console.log(note);
+      window.titleSet[note.title] = note._id;
+
+      var listElement = $("<li style='height:60px;' id="+note._id+"></li>");
+      var linkElement = $("<a></a>");
+      listElement.attr('onclick', 'populateEditor("'+note.title+'")');
+      linkElement.html(note.title);
+      linkElement.appendTo(listElement);
+
+      $("#notesList").append(listElement).listview('refresh');
+  });
+}
+
+function saveNote() {
+  $.ajax({
+    url: '/editContent',
+    data: {
+      id: titleSet[$('#editor-note-title').text()],
+      content: $("#note-text").val()
+    },
+    type: 'POST'
+  }).done(function(res) {
+    console.log(res);
   });
 }
 
@@ -143,12 +166,10 @@ function populateNotesFolder(array) {
   for(var i=0; i<array.length; i++) {
 
     var note = array[i];
-    console.log(note);
-    console.log(i);
 
-    window.titleSet[note.title] = note.content;
+    window.titleSet[note.title] = note._id;
 
-    var listElement = $("<li style='height:60px'></li>");
+    var listElement = $("<li style='height:60px' id="+note._id+"></li>");
 
     var linkElement = $("<a></a>");
     listElement.attr('onclick', 'populateEditor("'+note.title+'")');
@@ -157,32 +178,45 @@ function populateNotesFolder(array) {
 
     listElement.appendTo(list);
   }
-  console.log(window.titleSet);
 
   $("#list_container").append(list);
-}
 
-$("#notesList:visible").listview('refresh');
+  $("#notesList:visible").listview('refresh');
 
-function refresh() {
-  console.log("hi");
-  $("#notesList").listview('refresh');
+  
 }
 
 function insertTitle() {
   var title = $("#note-title").val();
+
 
   if(title in window.titleSet) {
     alert("This note title already exists!");
   }
   else {
     $("#editor-note-title").html(title);
+    addNote();
     $.mobile.changePage("#editor");
   }
 }
 
+function getContentById(noteId) {
+  $.ajax( {
+    url: '/getContent',
+    data: {
+      id: noteId
+    },
+    type: 'POST'
+  }).done(function(res) {
+    console.log("getContent: " , res);
+    console.log(res.content);
+    $("#note-text").val(res.content);
+    return;
+  });
+}
+
 function populateEditor(title) {
-  $("#note-text").val(window.titleSet[title]);
+  getContentById(window.titleSet[title]);
   $("#editor-note-title").text(title);
   $.mobile.changePage("#editor");
 }
@@ -194,7 +228,6 @@ function getNotes() {
       user: window.userId
     }
   }).done(function(res) {
-    console.log(res);
     populateNotesFolder(res);
   });
 }
@@ -203,23 +236,59 @@ function deleteNote() {
   $.ajax({
     url: '/delete',
     data: {
-      user: window.userId,
-      title: $("note-title").val()
+      id: window.titleSet[$("#editor-note-title").text()]
     }
+  }).done(function(res) {
+    deleteFromList($("#editor-note-title").text());
+    $.mobile.changePage("#notes");
   });
 }
 
+function deleteFromList(title) {
+  $("#"+window.titleSet[title]).remove();
+  delete window.titleSet[title];
+}
+
 function convertToHTML() {
-  console.log("in");
   $.ajax({
     type: 'POST' ,
     url: '/preview',
     data: {
-      content: JSON.stringify($('#note-text').val())
+      content: $('#note-text').val()
+    }
+  }).done(function(res) {
+    var frame = $("<iframe id='preview-frame'></iframe>");
+    $('#preview_content').append(frame);
+    setTimeout( function() {
+      var doc = frame[0].contentWindow.document;
+      var body = $('body',doc);
+      body.html(res);
+    }, 1);
+
+    $.mobile.changePage("#preview");
+  });
+}
+
+function convertAndSave() {
+  var doc = $('#preview-frame')[0].contentWindow.document;
+  var body = $('body', doc);
+  var html = "<html><body>" + body.html() + "</body></html>";
+  console.log(html);
+  $.ajax ({
+    type: 'POST',
+    url: 'http://pdfcrowd.com/api/pdf/convert/html/',
+    data: {
+      src: html,
+      username: 'mrmeku',
+      key: 'd6bbd7a788b1763cf98f46faaaf7a2b3'
     }
   }).done(function(res) {
     console.log(res);
   });
+}
+
+function enableButtons() {
+  $(".button-home-notes").removeClass("ui-disabled");
 }
 
 handleAuthResult();

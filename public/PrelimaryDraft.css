@@ -199,6 +199,17 @@ h3 {
 	margin-bottom: 25%;
 }
 
+#notes_content a#create-note{
+	width: 90%;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#notes_content .ui-btn-text {
+	height: 60px;
+}
+
 #new-note-title_content {
 	text-align: center;
 }
