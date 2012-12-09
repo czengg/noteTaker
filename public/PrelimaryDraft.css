@@ -245,7 +245,7 @@ h3 {
 }
 
 #editor_content .button-controls {
-	text-align: center;
+	margin-left: 10px;
 }
 
 #editor_content a .ui-link-inherit {
