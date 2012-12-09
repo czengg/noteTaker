@@ -17,6 +17,10 @@ h3 {
 	margin-bottom: 2%;
 }
 
+.ui-content {
+	margin-bottom: 75px;
+}
+
 .ui-page-header-fullscreen .ui-content, .ui-page-footer-fullscreen .ui-content {
 	padding-right: 2%;
 	padding-left: 2%;
@@ -49,7 +53,6 @@ h3 {
 
 #home_content h2 {
 	margin-top: 50px;
-	margin-bottom: 50px;
 	font-size: 50px;
 	font-family: Oswald;
 }
@@ -244,7 +247,7 @@ h3 {
 	width: 28%;
 }
 
-#editor_content .button-controls {
+#editor_content {
 	margin-left: 10px;
 }
 
