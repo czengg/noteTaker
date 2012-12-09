@@ -209,4 +209,17 @@ function deleteNote() {
   });
 }
 
+function convertToHTML() {
+  console.log("in");
+  $.ajax({
+    type: 'POST' ,
+    url: '/preview',
+    data: {
+      content: JSON.stringify($('#note-text').val())
+    }
+  }).done(function(res) {
+    console.log(res);
+  });
+}
+
 handleAuthResult();

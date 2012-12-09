@@ -83,10 +83,7 @@ function insertNote(noteName) {
   btnDiv.appendTo(textBtnDiv);
 }
 
-function insertTitle() {
-  var title = $("#note-title").val();
-  $("#editor-note-title").html(title);
-}
+
 
 //create-notes page: insert tags
 function insertTag(tagName) {
@@ -120,17 +117,5 @@ function storeLocally() {
   }
 }
 
-// calls server
-// function saveNote() {
-//   $.ajax({
-//     url: '/add',
-//     data: {
-//       title: $("#note-title").val(),
-//       user: "",
-//       content: $("note-text").val()
-//     }
 
-//   }
-//     )
-// }
 

@@ -316,13 +316,13 @@
 					<p>Insert the corresponding autolab link within this tag to generate an easily accessible autolab submission button</p>
 				</div>
 				<div class="ui-block-a tag-name" >
-					<h4>&#60;basecode&#62;</h4> 
+					<h4>&#60;download&#62;</h4> 
 				</div>
 				<div class="ui-block-b tag-description">
 					<p>Insert a link for students to download any basecode within this tag to generate an easily accessible basecode button</p>
 				</div>
 				<div class="ui-block-a tag-name" >
-					<h4>&#60;general&#62;</h4> 
+					<h4>&#60;a&#62;</h4> 
 				</div>
 				<div class="ui-block-b tag-description">
 					<p>Insert a link within this tag to hyperlink to a given site. This will not generate a button.</p>
@@ -1074,17 +1074,17 @@
 									</span>
 								</span>
 							</a>
-							<a class="ui-btn ui-btn-up-c ui-shadow ui-btn-corner-all ui-btn-inline" data-wrapperels="span" data-iconshadow="true" data-shadow="true" data-corners="true" href="#" data-role="button" data-inline="true" data-rel="back" data-theme="c" data-mini="true" onclick="insertTag('basecode')" ontap="insertTag('basecode')">
+							<a class="ui-btn ui-btn-up-c ui-shadow ui-btn-corner-all ui-btn-inline" data-wrapperels="span" data-iconshadow="true" data-shadow="true" data-corners="true" href="#" data-role="button" data-inline="true" data-rel="back" data-theme="c" data-mini="true" onclick="insertTag('download')" ontap="insertTag('download')">
 								<span class="ui-btn-inner">
 									<span class="ui-btn-text" >
-										&#60;basecode&#62;
+										&#60;download&#62;
 									</span>
 								</span>
 							</a>
-							<a class="ui-btn ui-btn-up-c ui-shadow ui-btn-corner-all ui-btn-inline" data-wrapperels="span" data-iconshadow="true" data-shadow="true" data-corners="true" href="#" data-role="button" data-inline="true" data-rel="back" data-theme="c" data-mini="true" onclick="insertTag('link')" ontap="insertTag('link')">
+							<a class="ui-btn ui-btn-up-c ui-shadow ui-btn-corner-all ui-btn-inline" data-wrapperels="span" data-iconshadow="true" data-shadow="true" data-corners="true" href="#" data-role="button" data-inline="true" data-rel="back" data-theme="c" data-mini="true" onclick="insertTag('a')" ontap="insertTag('a')">
 								<span class="ui-btn-inner">
 									<span class="ui-btn-text" >
-										&#60;link&#62;
+										&#60;a&#62;
 									</span>
 								</span>
 							</a>
@@ -1128,24 +1128,10 @@
 									</span>
 								</span>
 							</a>
-							<a class="ui-btn ui-btn-up-c ui-shadow ui-btn-corner-all ui-btn-inline" data-wrapperels="span" data-iconshadow="true" data-shadow="true" data-corners="true" href="#" data-role="button" data-inline="true" data-rel="back" data-theme="c" data-mini="true" onclick="insertTag('basecode')" ontap="insertTag('basecode')">
+							<a class="ui-btn ui-btn-up-c ui-shadow ui-btn-corner-all ui-btn-inline" data-wrapperels="span" data-iconshadow="true" data-shadow="true" data-corners="true" href="#" data-role="button" data-inline="true" data-rel="back" data-theme="c" data-mini="true" onclick="insertTag('section')" ontap="insertTag('section')" >
 								<span class="ui-btn-inner">
 									<span class="ui-btn-text" >
-										&#60;basecode&#62;
-									</span>
-								</span>
-							</a>
-							<a class="ui-btn ui-btn-up-c ui-shadow ui-btn-corner-all ui-btn-inline" data-wrapperels="span" data-iconshadow="true" data-shadow="true" data-corners="true" href="#" data-role="button" data-inline="true" data-rel="back" data-theme="c" data-mini="true" onclick="insertTag('link')" ontap="insertTag('link')" >
-								<span class="ui-btn-inner">
-									<span class="ui-btn-text" >
-										&#60;link&#62;
-									</span>
-								</span>
-							</a>
-							<a class="ui-btn ui-btn-up-c ui-shadow ui-btn-corner-all ui-btn-inline" data-wrapperels="span" data-iconshadow="true" data-shadow="true" data-corners="true" href="#" data-role="button" data-inline="true" data-rel="back" data-theme="c" data-mini="true" onclick="insertTag('img')" ontap="insertTag('img')">
-								<span class="ui-btn-inner">
-									<span class="ui-btn-text" >
-										&#60;img&#62;
+										&#60;section&#62;
 									</span>
 								</span>
 							</a>
@@ -1486,7 +1472,7 @@
 
 				<a data-theme="b" data-role="button" data-mini="true" onclick="saveNote()" ontap="saveNote()" id="save-button" data-inline="true">Save</a>
 				
-				<a href="#preview" data-theme="a" data-role="button" data-mini="true" data-inline="true">Preview</a>	
+				<a href="#preview" data-theme="a" data-role="button" data-mini="true" data-inline="true" onclick="convertToHTML()" ontouch="convertToHTML()">Preview</a>	
 			</div>
 		</div>
 
@@ -1497,7 +1483,7 @@
 					<li><a href="#home" data-icon="home">Home</a></li>
 					<li><a href="#notes" data-icon="info">Notes</a></li>
 					<li><a href="#editor" data-icon="gear">Editor</a></li>
-					<li><a href="#preview" data-icon="star" class="ui-disabled info-button">Preview</a></li>
+					<li><a href="#preview" data-icon="star" class="ui-disabled info-button" >Preview</a></li>
 					<li><a href="#confirmation" data-icon="grid" class="ui-disabled confirm-button">Confirm</a></li>
 				</ul>
 			</div>
