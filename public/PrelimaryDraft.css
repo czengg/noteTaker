@@ -238,10 +238,6 @@ h3 {
 	margin-left: 10px;
 }
 
-/*#editor_content .button-controls {
-	text-align: center;
-}*/
-
 #editor_content .button-controls a{
 	margin: 1%;
 	width: 28%;
@@ -277,6 +273,24 @@ h3 {
 
 #editor_content h2, h4 {
 	margin-left: 10px;
+}
+
+#preview_content iframe {
+	height: 100%;
+	width: 90%;
+	margin-left: auto;
+	margin-right: auto;
+	padding-bottom: 54px;
+	margin: 0px;
+	overflow: hidden;
+}
+
+#preview_content {
+	margin: 0px;
+	height:100%;
+	text-align: center;
+	padding-bottom: 0px;
+	padding-top: 0px;
 }
 
 #note-text {

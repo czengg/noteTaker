@@ -986,7 +986,7 @@
 					<li><a href="#home" data-icon="home">Home</a></li>
 					<li><a href="#notes" data-icon="info">Notes</a></li>
 					<li><a href="#editor" data-icon="gear">Editor</a></li>
-					<li><a href="#preview" data-icon="star" class="ui-disabled info-button">Preview</a></li>
+					<li><a href="#preview" data-icon="star" class="info-button">Preview</a></li>
 					<li><a href="#confirmation" data-icon="grid" class="ui-disabled confirm-button">Confirm</a></li>
 				</ul>
 			</div>
@@ -1483,12 +1483,38 @@
 					<li><a href="#home" data-icon="home">Home</a></li>
 					<li><a href="#notes" data-icon="info">Notes</a></li>
 					<li><a href="#editor" data-icon="gear">Editor</a></li>
-					<li><a href="#preview" data-icon="star" class="ui-disabled info-button" >Preview</a></li>
+					<li><a href="#preview" data-icon="star" class="info-button" >Preview</a></li>
 					<li><a href="#confirmation" data-icon="grid" class="ui-disabled confirm-button">Confirm</a></li>
 				</ul>
 			</div>
 		</div>
 	</div>
+
+	<div data-role="page" data-title="Preview Page" id="preview">
+		<div data-role="content" id="preview_content" role="main" >
+			<iframe src='http://www.w3schools.com' ></iframe>
+					<!-- <html>
+						<body style="background-color: red; height: 100%;">
+
+						</body>
+					</html> -->
+			<!-- </iframe> -->
+		</div>
+
+		<!-- footer -->
+		<div data-role="footer" class="footer" data-fullscreen="true" data-position="fixed" data-tap-toggle="false">
+			<div data-role="navbar">
+				<ul>
+					<li><a href="#home" data-icon="home">Home</a></li>
+					<li><a href="#notes" data-icon="info">Notes</a></li>
+					<li><a href="#editor" data-icon="gear">Editor</a></li>
+					<li><a href="#preview" data-icon="star" class="ui-disabled info-button">Preview</a></li>
+					<li><a href="#confirmation" data-icon="grid" class="ui-disabled confirm-button">Confirm</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
 	<script type="text/template" id="fileList-template">
 		<li data-corners="false" data-shadow="false" data-iconshadow="true" data-wrapperels="div" data-icon="arrow-r" data-iconpos="right" class="ui-btn ui-btn-icon-right ui-li-has-arrow ui-li" data-theme="d">
 			<div class="ui-btn-inner ui-li">

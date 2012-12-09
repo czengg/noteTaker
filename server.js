@@ -19,8 +19,6 @@ function init(){
     configureExpress(app);
 
     var User = initUser();
-
-    // mongoose.connect('mongodb://localhost/noteTaker');
 }
 
 init();
@@ -167,18 +165,13 @@ app.get('/editContent', function(req, res) {
 
 
 function xmlToHtml(xmlString, res) {
-	console.log('start \n')
 	var parser = new DomJS();
 	parser.strict = false;
-	console.log('parserinit \n')
 	var doc = parser.parse(xmlString, function(err,doc) {
-		console.log(doc.toXml());
-		console.log('parse from string \n');
-		console.log(doc);
 		changeNames(doc);
 		if (foundError) 
 		{
-			return res.send('error');
+			return res.send();
 		}
 		console.log(doc.toXml());
 		var body = doc.toXml();
