@@ -7,6 +7,7 @@ var util = require('util');
 var fs = require('fs');
 var querystring = require('querystring');
 var url = require('url');
+var pdf = require('pdfcrowd');
 var app = express();
 var port = process.env.PORT || 8080;
 var DomJS = require("dom-js").DomJS;
@@ -36,7 +37,7 @@ db.once("open", function() {
 	console.log("MongoDB connected");
 });
 
-
+var client = new pdf.Pdfcrowd("mrmeku","d6bbd7a788b1763cf98f46faaaf7a2b3");
 
 // mongo.Db.connect(mongoUri, function (err, db) {
 //   db.collection('db', function(er, collection) {
@@ -185,6 +186,12 @@ app.post('/editContent', function(req, res) {
 		
 	);
 });
+
+app.post('/createPDF', function(req, res) {
+	client.convertHtml(req.body.html,function(readableStream) {
+		res.send(readableStream);
+	})
+})
 
 
 function xmlToHtml(xmlString, res) {

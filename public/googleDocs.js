@@ -274,17 +274,16 @@ function convertAndSave() {
   var body = $('body', doc);
   var html = "<html><body>" + body.html() + "</body></html>";
   console.log(html);
-  $.ajax ({
+  $.ajax({
     type: 'POST',
-    url: 'http://pdfcrowd.com/api/pdf/convert/html/',
+    url: '/createPDF',
     data: {
-      src: html,
-      username: 'mrmeku',
-      key: 'd6bbd7a788b1763cf98f46faaaf7a2b3'
+      html: html
     }
-  }).done(function(res) {
+  }).done( function(res) {
     console.log(res);
-  });
+  })
+  
 }
 
 function enableButtons() {
