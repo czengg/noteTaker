@@ -235,8 +235,13 @@ h3 {
 	margin-left: 10px;
 }
 
+/*#editor_content .button-controls {
+	text-align: center;
+}*/
+
 #editor_content .button-controls a{
 	margin: 3px;
+	width: 33%;
 }
 
 #editor_content a .ui-link-inherit {
