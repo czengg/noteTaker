@@ -282,7 +282,7 @@ h3 {
 	margin-right: auto;
 	padding-bottom: 54px;
 	margin: 0px;
-	overflow: scroll;
+	overflow: visible;
 }
 
 #preview_content {
