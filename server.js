@@ -97,7 +97,7 @@ var NoteModel = db.model('Note', Note);
 app.get('/getFiles', function (req, res) {
 	var query = url.parse(req.url);
 	var args = querystring.parse(query.query);
-	return NoteModel.find( {user: args.user}, function(err, notes) {
+	return NoteModel.find( {user: args.user}, {title: 1}, function(err, notes) {
 		res.send(notes);
 	});
 });
@@ -175,7 +175,7 @@ function xmlToHtml(xmlString, res) {
 		}
 		console.log(doc.toXml());
 		var body = doc.toXml();
-		var html = '<html><head><style type="text/css">' + css + '</style><script type="text/javascript" src="prettify.js"></script></head>' + body + "</html>";
+		var html = '<!DOCTYPE html><html><head><meta content="initial-scale=1, minimum-scale=1, width=device-width" name="viewport"><style type="text/css">' + css + '</style><script type="text/javascript" src="prettify.js"></script></head>' + body + "</html>";
 		console.log(html);
 		return res.send(html);
 	});
