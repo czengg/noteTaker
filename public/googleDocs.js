@@ -47,22 +47,22 @@ function handleAuthResult(authResult) {
     console.log(gapi);
     getId(authResult);
   } else {
-    $("#logOutButton").css("display","none");
+    // $("#logOutButton").css("display","none");
     // No access token could be retrieved, show the button to start the authorization flow.
     authButton.css('inline-block');
     $(".button-home-notes").addClass("ui-disabled");
     authButton.click(function() {
         enableButtons();
         authButton.css("display","none");
-        $("#logOutButton").css("display","inline-block");
+        // $("#logOutButton").css("display","inline-block");
         gapi.auth.authorize(
             {'client_id': CLIENT_ID, 'scope': SCOPES, 'immediate': false},
             handleAuthResult);
     });
     authButton.on('tap', function() {
         enableButtons();
-        authButton.css("display","none");
-        $("#logOutButton").css("display","inline-block");
+        // authButton.css("display","none");
+        // $("#logOutButton").css("display","inline-block");
         gapi.auth.authorize(
             {'client_id': CLIENT_ID, 'scope': SCOPES, 'immediate': false},
             handleAuthResult);
