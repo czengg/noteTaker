@@ -8,7 +8,6 @@ var fs = require('fs');
 var querystring = require('querystring');
 var url = require('url');
 var pdf = require('pdfcrowd');
-var $ = require('jquery');
 var app = express();
 var port = process.env.PORT || 8080;
 var DomJS = require("dom-js").DomJS;
