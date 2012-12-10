@@ -63,10 +63,8 @@ h3 {
 
 #home_content a {
 	margin-top: 20px;
-	width: 30%;
-	display: inline-block;
+	display: block;
 	margin-left: 10px;
-	margin-bottom: 25%;
 }
 
 /*instructions-home about us*/

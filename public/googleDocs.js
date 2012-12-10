@@ -26,6 +26,7 @@ function getId(authResult) {
     },
     type: 'GET'
   }).done(function(res) {
+    enableButtons();
     window.userId = res.id;
     getNotes();
   });
@@ -43,26 +44,17 @@ function handleAuthResult(authResult) {
   if (authResult && !authResult.error) {
     // Access token has been successfully retrieved, requests can be sent to the API.
     authButton.css("display","none");
-    $("#logOutButton").css("display","inline-block");
     console.log(gapi);
     getId(authResult);
   } else {
-    // $("#logOutButton").css("display","none");
     // No access token could be retrieved, show the button to start the authorization flow.
-    authButton.css('inline-block');
-    $(".button-home-notes").addClass("ui-disabled");
+    authButton.css('block');
     authButton.click(function() {
-        enableButtons();
-        // authButton.css("display","none");
-        // $("#logOutButton").css("display","inline-block");
         gapi.auth.authorize(
             {'client_id': CLIENT_ID, 'scope': SCOPES, 'immediate': false},
             handleAuthResult);
     });
     authButton.on('tap', function() {
-        enableButtons();
-        // authButton.css("display","none");
-        // $("#logOutButton").css("display","inline-block");
         gapi.auth.authorize(
             {'client_id': CLIENT_ID, 'scope': SCOPES, 'immediate': false},
             handleAuthResult);
