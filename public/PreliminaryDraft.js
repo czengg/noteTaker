@@ -28,6 +28,21 @@ $.fn.extend({
  }
 })
 
+// function setDimensions() {
+//   var windowHeight = $(window).height();
+//   var windowWidth = $(window).width();
+//   var footerHeight = $(".footer").outerHeight();
+//   var headerHeight = $(".header").outerHeight();
+//   console.log($(".footer").height());
+//   console.log($(".header"));
+
+//   $(".content").each(function() {$(this).height(windowHeight-footerHeight-headerHeight);});
+//   $(".content").each(function() {$(this).width(windowWidth);});
+// }
+
+// $("body").load(setDimensions());
+
+
 // notes-content page: insert locally stored pages
 function insertNote(noteName) {
   var numOfElements = $("#notes-list li").length - 3;

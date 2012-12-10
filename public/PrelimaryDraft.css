@@ -1,123 +1,123 @@
 h2 {
-    font-size: 50px;
-    font-family: Oswald;
-    margin-bottom: 2%;
-    margin-top: 2%;
+	font-size: 50px;
+	font-family: Oswald;
+	margin-bottom: 2%;
+	margin-top: 2%;
 }
 
 h4 {
-    font-size: 15px;
-    font-style: italic;
-    margin-bottom: 30px;
+	font-size: 15px;
+	font-style: italic;
+	margin-bottom: 30px;
 }
 
 h3 {
-    font-size: 30px;
-    font-family: Carrois Gothic SC;
-    margin-bottom: 2%;
+	font-size: 30px;
+	font-family: Carrois Gothic SC;
+	margin-bottom: 2%;
 }
 
 .ui-content {
-    margin-bottom: 75px;
+	margin-bottom: 75px;
 }
 
 .ui-page-header-fullscreen .ui-content, .ui-page-footer-fullscreen .ui-content {
-    padding-right: 2%;
-    padding-left: 2%;
+	padding-right: 2%;
+	padding-left: 2%;
 }
 
 .content, .ui-content, .ui-li {
-    min-height: 100%;
-    padding-right: 5%;
-    padding-left: 5%;
-    max-height: 100%;
+	min-height: 100%;
+	padding-right: 5%;
+	padding-left: 5%;
+	max-height: 100%;
 }
 
 .ui-listview-filter {
-    padding-right: 5%;
-    padding-left: 5%;
+	padding-right: 5%;
+	padding-left: 5%;
 }
 
 #home_content #logOutButton {
-    display: none;
+	display: none;
 }
 
 #notes_content {
-    min-height: 100%;
+	min-height: 100%;
 }
 
 /*home sign in page*/
 #home_content {
-    text-align: center;
+	text-align: center;
 }
 
 #home_content h2 {
-    margin-top: 50px;
-    font-size: 50px;
-    font-family: Oswald;
+	margin-top: 50px;
+	font-size: 50px;
+	font-family: Oswald;
 }
 
 #home_content input {
-    width:50%;
+	width:50%;
 }
 
 #home_content a {
-    margin-top: 20px;
-    display: block;
-    margin-left: 10px;
+	margin-top: 20px;
+	display: block;
+	margin-left: 10px;
 }
 
 /*instructions-home about us*/
 #instructions-home_content h2 {
-    margin-bottom: 10%;
-    font-size: 40px;
+	margin-bottom: 10%;
+	font-size: 40px;
 }
 
 #instructions-home_content h4 {
-    margin-bottom: 5%;
+	margin-bottom: 5%;
 }
 
 #instructions-home_content h3 {
-    font-size: 20px;
-    font-family: Carrois Gothic SC;
-    margin-bottom: 2%;
+	font-size: 20px;
+	font-family: Carrois Gothic SC;
+	margin-bottom: 2%;
 }
 
 /*instructions-one step by step*/
 #instructions-one_content h2 {
-    margin-bottom: 10%;
-    font-size: 40px;
+	margin-bottom: 10%;
+	font-size: 40px;
 }
 
-#instructions-one_content h3 {
-    font-size: 15px;
-    margin-bottom: 3%;
-    display: inline-block;
+#instructions-one_content h3{
+	font-size: 15px;
+	margin-bottom: 3%;
+	display: inline-block;
 }
 
-#instructions-one_content h4 {
-    display: inline-block;
+#instructions-one_content h4{
+	display: inline-block;
 }
 
 /*instructions-two guide to shortcuts*/
 #instructions-two h3 {
-    font-size: 18px;
-    margin-bottom: 1%;
-    display: inline-block;
+	font-size: 18px;
+	margin-bottom: 1%;
+	display: inline-block;
 }
 
 #instructions-two h4 {
-    font-size:12px;
-    display: inline-block;
-    margin-bottom: 1%;
+	font-size:12px;
+	display: inline-block;
+	margin-bottom: 1%;
 }
 
 #instructions-two h2 {
-    margin-bottom: 4%;
+	margin-bottom: 4%;
 }
 
 .ui-li {
-    border: none;
+	border: none;
 }
 
 .ui-focus, .ui-btn:focus {
@@ -125,216 +125,215 @@ h3 {
 }
 
 .ui-field-contain .ui-select {
-    width: 50%;
+	width: 50%;
 }
 
 .tag-name.ui-block-a {
-    text-align: center;
-    width: 30%;
-    margin-bottom: 2%;
+	text-align: center;
+	width: 30%;
+	margin-bottom: 2%;
 }
 
 .tag-description.ui-block-b {
-    width: 70%;
-    margin-bottom: 2%;
+	width: 70%;
+	margin-bottom: 2%;
 }
 
-.instructions-buttons .ui-block-a.tag-name h4 {
-    font-family: Carrois Gothic SC;
-    font-size: 17px;
-    font-style: normal;
+.instructions-buttons .ui-block-a.tag-name h4{
+	font-family: Carrois Gothic SC;
+	font-size: 17px;
+	font-style: normal;
 }
 
 .instructions-buttons h4 {
-    display: inline-block;
-    margin-bottom: 1%;
-    font-family: Carrois Gothic SC;
-    font-style: normal;
-    font-size: 20px;
+	display: inline-block;
+	margin-bottom: 1%;
+	font-family: Carrois Gothic SC;
+	font-style: normal;
+	font-size: 20px;
 }
 
 .instructions-buttons h2 {
-    display: inline-block;
+	display: inline-block;
 }
 
 .instructions-buttons .tag-description p {
-    font-size: 13px;
-    font-style: italic;
+	font-size: 13px;
+	font-style: italic;
 }
 
 .ui-page-header-fullscreen .ui-content, .ui-page-footer-fullscreen .ui-content {
-    padding-left: 5px;
-    padding-right: 5px;
-    padding-bottom: 20px;
-    padding-top: 20px;
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-bottom: 20px;
+	padding-top: 20px;
 }
 
 #notes_content form {
-    margin-bottom: 20px;
+	margin-bottom: 20px;
 }
 
 #notes_content input {
-    color: gray;
+	color: gray;
 }
 
 #notes_content li {
-    margin-left: 10px;
+	margin-left: 10px;
 }
 
 #notes_content h2, h4 {
-    margin-left: 10px;
+	margin-left: 10px;
 }
 
 #notes_content {
-    text-align: center;
+	text-align: center;
 }
 
 #notes_content a {
-    margin-top: 20px;
-    width: 30%;
-    display: inline-block;
-    margin-left: 10px;
-    margin-bottom: 25%;
+	margin-top: 20px;
+	width: 30%;
+	display: inline-block;
+	margin-left: 10px;
+	margin-bottom: 25%;
 }
 
-/*Needed to override jquery mobile css selector! */
-a#create-note {
-    width: 90%;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
+#notes_content a#create-note{
+	width: 90%;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 #notes_content .ui-btn-text {
-    height: 60px;
+	height: 60px;
 }
 
 #new-note-title_content {
-    text-align: center;
+	text-align: center;
 }
 
 #new-note-title_content h2 {
-    margin-top: 50px;
-    font-size: 50px;
-    font-family: Oswald;
+	margin-top: 50px;
+	font-size: 50px;
+	font-family: Oswald;
 }
 
 #new-note-title_content input {
-    width: 80%;
-    margin-right: auto;
-    margin-left: auto;
-    color: gray;
-    margin-bottom: 20px;
+	width: 80%;
+	margin-right: auto;
+	margin-left: auto;
+	color: gray;
+	margin-bottom: 20px;
 }
 
 #new-note-title_content a {
-    width: 50%;
-    margin-right: auto;
-    margin-left: auto;
+	width: 50%;
+	margin-right: auto;
+	margin-left: auto;
 }
 
 #editor_content label {
-    font-size: 15px;
-    color: gray;
+	font-size: 15px;
+	color: gray;
 }
 
 #editor_content a {
-    font-size: 12px;
+	font-size: 12px;
 }
 
 #editor_content .button-layout {
-    margin: -1px;
-    width: 100%;
-    margin-left: 10px;
+	margin: -1px;
+	width: 100%;
+	margin-left: 10px;
 }
 
-#editor_content .button-controls a {
-    margin: 1%;
-    width: 28%;
+#editor_content .button-controls a{
+	margin: 1%;
+	width: 28%;
 }
 
 #editor_content {
-    margin-left: 10px;
+	margin-left: 10px;
 }
 
 #editor_content a .ui-link-inherit {
-    display:block;
+	display:block;
 }
 
 #editor_content .ui-popup-container {
-    z-index: 1;
+	z-index: 1;
 }
 
 #editor_content .ui-controlgroup-controls {
-    width: 100%;
-    text-align: left;
+	width: 100%;
+	text-align: left;
 }
 
 #editor_content .ui-btn {
-    width:30%;
+	width:30%;
 }
 
-#editor_content .inline-buttons {
-    margin-top: 20px;
-    width: 33%;
-    display: inline-block;
-    margin-left: 10px;
+#editor_content .inline-buttons{
+	margin-top: 20px;
+	width: 33%;
+	display: inline-block;
+	margin-left: 10px;
 }
 
 #editor_content h2, h4 {
-    margin-left: 10px;
+	margin-left: 10px;
 }
 
 #preview_content iframe {
-    height: 100%;
-    width: 90%;
-    margin-left: auto;
-    margin-right: auto;
-    padding-bottom: 54px;
-    margin: 0px;
-    overflow: visible;
+	height: 100%;
+	width: 90%;
+	margin-left: auto;
+	margin-right: auto;
+	padding-bottom: 54px;
+	margin: 0px;
+	overflow: visible;
 }
 
 #preview_content {
-    margin: 0px;
-    height:100%;
-    text-align: center;
-    padding-bottom: 0px;
-    padding-top: 0px;
+	margin: 0px;
+	height:100%;
+	text-align: center;
+	padding-bottom: 0px;
+	padding-top: 0px;
 }
 
 #note-text {
-    width: 80%;
-    margin-left: 10px;
+	width: 80%;
+	margin-left: 10px;
 }
 
 .ui-li .ui-btn-inner a.ui-link-inherit, .ui-li-static.ui-li {
-    padding: 5px;
+	padding: 5px;
 }
 
 #note-text {
-    color: gray;
+	color: gray;
 }
 
 @media only screen and (min-device-width : 320px) and (max-device-width : 480px) and (orientation:portrait) {
 
-    #home_content input {
-        width: 100%;
-    }
+	#home_content input {
+		width: 100%;
+	}
 
-    .ui-field-contain .ui-select {
-        width: 100%;
-    }
+	.ui-field-contain .ui-select {
+		width: 100%;
+	}
 
-    #editor_content .button-group {
-    margin-right: 10px;
-    width: 100%;
+	#editor_content .button-group {
+	margin-right: 10px;
+	width: 100%;
 }
 }
 
 @media only screen and (min-device-width : 320px) and (max-device-width : 480px) and (orientation:landscape) {
 
-    #home_content input {
-        width: 50%;
-    }
+	#home_content input {
+		width: 50%;
+	}
 }

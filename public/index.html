@@ -29,7 +29,7 @@
 			<h4>This app uses your Google account to store documents directly in Google Drive. Proceed by clicking "Log Me In" which will prompt you to sign in with your Google account... For more detailed instructions, click "Step Zero"</h4>
 
 			<!-- Sign In Button -->
-			<a data-inline="true" data-rel="external" data-role="button" data-mini="true" id="authorizeButton">Log me in</a>
+			<a data-inline="true" data-role="button" data-mini="true" id="authorizeButton">Log me in</a>
 
 			<!-- Guide Button -->
 			<a data-inline="true" href="#instructions-home" data-role="button" data-mini="true">Guide</a>
@@ -135,7 +135,7 @@
 			</div>
 		</div>
 
-		<div data-role="content"  role="main">
+		<div data-role="content" id="instructions-two_content" role="main">
 			<h2>Note-Taker</h2>
 
 			<div data-role="navbar">
@@ -193,7 +193,7 @@
 			
 		</div>
 
-		<div data-role="content"  role="main">
+		<div data-role="content" id="instructions-two_content" role="main">
 			<h2>Note-Taker</h2> <h4>Section</h4>
 
 			<div data-role="navbar">
@@ -263,7 +263,7 @@
 			
 		</div>
 
-		<div data-role="content"  role="main">
+		<div data-role="content" id="instructions-two_content" role="main">
 			<h2>Note-Taker</h2>
 			<h4>Links</h4>
 
@@ -353,7 +353,7 @@
 			
 		</div>
 
-		<div data-role="content"  role="main">
+		<div data-role="content" id="instructions-two_content" role="main">
 			<h2>Note-Taker</h2>
 			<h4>Breaks</h4>
 
@@ -431,7 +431,7 @@
 			
 		</div>
 
-		<div data-role="content"  role="main">
+		<div data-role="content" id="instructions-two_content" role="main">
 			<h2>Note-Taker</h2>
 			<h4>List</h4>
 
@@ -515,7 +515,7 @@
 			
 		</div>
 
-		<div data-role="content"  role="main">
+		<div data-role="content" id="instructions-two_content" role="main">
 			<h2>Note-Taker</h2>
 			<h4>Table</h4>
 
@@ -593,7 +593,7 @@
 			
 		</div>
 
-		<div data-role="content"  role="main">
+		<div data-role="content" id="instructions-two_content" role="main">
 			<h2>Note-Taker</h2>
 			<h4>&#60;Code&#62;</h4>
 
@@ -665,7 +665,7 @@
 			
 		</div>
 
-		<div data-role="content"  role="main">
+		<div data-role="content" id="instructions-two_content" role="main">
 			<h2>Note-Taker</h2>
 			<h4>Heading</h4>
 
@@ -759,7 +759,7 @@
 			</div>
 		</div>
 
-		<div data-role="content"  role="main">
+		<div data-role="content" id="instructions-two_content" role="main">
 			<h2>Note-Taker</h2>
 			<h4>Font</h4>
 
@@ -841,7 +841,7 @@
 			</div>
 		</div>
 
-		<div data-role="content"  role="main">
+		<div data-role="content" id="instructions-two_content" role="main">
 			<h2>Note-Taker</h2>
 			<h4>Highlight </h4>
 
@@ -1003,14 +1003,14 @@
 						</div>
 						<div role="main" data-role="content" data-theme="d" class="ui-corner-bottom ui-content ui-body-d">
 							<h3 class="ui-title">Select the tag you'd like to use</h3>
-							<a class="ui-btn ui-btn-up-c ui-shadow ui-btn-corner-all ui-btn-inline" data-wrapperels="span" data-iconshadow="true" data-shadow="true" data-corners="true" href="#" data-role="button" data-inline="true" data-rel="back" data-theme="c" onclick="insertTag('toc')" ontouch="insertTag('toc')">
+							<a class="ui-btn ui-btn-up-c ui-shadow ui-btn-corner-all ui-btn-inline" data-wrapperels="span" data-iconshadow="true" data-shadow="true" data-corners="true" href="#" data-role="button" data-inline="true" data-rel="back" data-theme="c" onclick="insertTag('toc')" ontap="insertTag('toc')">
 								<span class="ui-btn-inner">
 									<span class="ui-btn-text" >
 										&#60;toc&#62;
 									</span>
 								</span>
 							</a>    
-							<a class="ui-btn ui-btn-up-c ui-shadow ui-btn-corner-all ui-btn-inline" data-wrapperels="span" data-iconshadow="true" data-shadow="true" data-corners="true" href="#" data-role="button" data-inline="true" data-rel="back" data-theme="c" onclick="insertTag('review')" ontouch="insertTag('review')">
+							<a class="ui-btn ui-btn-up-c ui-shadow ui-btn-corner-all ui-btn-inline" data-wrapperels="span" data-iconshadow="true" data-shadow="true" data-corners="true" href="#" data-role="button" data-inline="true" data-rel="back" data-theme="c" onclick="insertTag('review')" ontap="insertTag('review')">
 								<span class="ui-btn-inner">
 									<span class="ui-btn-text" >
 										&#60;review&#62;
@@ -1036,35 +1036,35 @@
 						</div>
 						<div role="main" data-role="content" data-theme="d" class="ui-corner-bottom ui-content ui-body-d">
 							<h3 class="ui-title">Select the tag you'd like to use</h3>
-							<a class="ui-btn ui-btn-up-c ui-shadow ui-btn-corner-all ui-btn-inline" data-wrapperels="span" data-iconshadow="true" data-shadow="true" data-corners="true" href="#" data-role="button" data-inline="true" data-rel="back" data-theme="c" data-mini="true" onclick="insertTag('piazza')" ontouch="insertTag('piazza')">
+							<a class="ui-btn ui-btn-up-c ui-shadow ui-btn-corner-all ui-btn-inline" data-wrapperels="span" data-iconshadow="true" data-shadow="true" data-corners="true" href="#" data-role="button" data-inline="true" data-rel="back" data-theme="c" data-mini="true" onclick="insertTag('piazza')" ontap="insertTag('piazza')">
 								<span class="ui-btn-inner">
 									<span class="ui-btn-text" >
 										&#60;piazza&#62;
 									</span>
 								</span>
 							</a>    
-							<a class="ui-btn ui-btn-up-c ui-shadow ui-btn-corner-all ui-btn-inline" data-wrapperels="span" data-iconshadow="true" data-shadow="true" data-corners="true" href="#" data-role="button" data-inline="true" data-rel="back" data-theme="c" data-mini="true" onclick="insertTag('autolab')" ontouch="insertTag('autolab')">
+							<a class="ui-btn ui-btn-up-c ui-shadow ui-btn-corner-all ui-btn-inline" data-wrapperels="span" data-iconshadow="true" data-shadow="true" data-corners="true" href="#" data-role="button" data-inline="true" data-rel="back" data-theme="c" data-mini="true" onclick="insertTag('autolab')" ontap="insertTag('autolab')">
 								<span class="ui-btn-inner">
 									<span class="ui-btn-text" >
 										&#60;autolab&#62;
 									</span>
 								</span>
 							</a>
-							<a class="ui-btn ui-btn-up-c ui-shadow ui-btn-corner-all ui-btn-inline" data-wrapperels="span" data-iconshadow="true" data-shadow="true" data-corners="true" href="#" data-role="button" data-inline="true" data-rel="back" data-theme="c" data-mini="true" onclick="insertTag('download')" ontouch="insertTag('download')">
+							<a class="ui-btn ui-btn-up-c ui-shadow ui-btn-corner-all ui-btn-inline" data-wrapperels="span" data-iconshadow="true" data-shadow="true" data-corners="true" href="#" data-role="button" data-inline="true" data-rel="back" data-theme="c" data-mini="true" onclick="insertTag('download')" ontap="insertTag('download')">
 								<span class="ui-btn-inner">
 									<span class="ui-btn-text" >
 										&#60;download&#62;
 									</span>
 								</span>
 							</a>
-							<a class="ui-btn ui-btn-up-c ui-shadow ui-btn-corner-all ui-btn-inline" data-wrapperels="span" data-iconshadow="true" data-shadow="true" data-corners="true" href="#" data-role="button" data-inline="true" data-rel="back" data-theme="c" data-mini="true" onclick="insertTag('a')" ontouch="insertTag('a')">
+							<a class="ui-btn ui-btn-up-c ui-shadow ui-btn-corner-all ui-btn-inline" data-wrapperels="span" data-iconshadow="true" data-shadow="true" data-corners="true" href="#" data-role="button" data-inline="true" data-rel="back" data-theme="c" data-mini="true" onclick="insertTag('a')" ontap="insertTag('a')">
 								<span class="ui-btn-inner">
 									<span class="ui-btn-text" >
 										&#60;a&#62;
 									</span>
 								</span>
 							</a>
-							<a class="ui-btn ui-btn-up-c ui-shadow ui-btn-corner-all ui-btn-inline" data-wrapperels="span" data-iconshadow="true" data-shadow="true" data-corners="true" href="#" data-role="button" data-inline="true" data-rel="back" data-theme="c" data-mini="true" onclick="insertTag('img')" ontouch="insertTag('img')">
+							<a class="ui-btn ui-btn-up-c ui-shadow ui-btn-corner-all ui-btn-inline" data-wrapperels="span" data-iconshadow="true" data-shadow="true" data-corners="true" href="#" data-role="button" data-inline="true" data-rel="back" data-theme="c" data-mini="true" onclick="insertTag('img')" ontap="insertTag('img')">
 								<span class="ui-btn-inner">
 									<span class="ui-btn-text" >
 										&#60;img&#62;
@@ -1090,21 +1090,21 @@
 						</div>
 						<div role="main" data-role="content" data-theme="d" class="ui-corner-bottom ui-content ui-body-d">
 							<h3 class="ui-title">Select the tag you'd like to use</h3>
-							<a class="ui-btn ui-btn-up-c ui-shadow ui-btn-corner-all ui-btn-inline" data-wrapperels="span" data-iconshadow="true" data-shadow="true" data-corners="true" href="#" data-role="button" data-inline="true" data-rel="back" data-theme="c" data-mini="true" onclick="insertTag('br')" ontouch="insertTag('br')">
+							<a class="ui-btn ui-btn-up-c ui-shadow ui-btn-corner-all ui-btn-inline" data-wrapperels="span" data-iconshadow="true" data-shadow="true" data-corners="true" href="#" data-role="button" data-inline="true" data-rel="back" data-theme="c" data-mini="true" onclick="insertTag('br')" ontap="insertTag('br')">
 								<span class="ui-btn-inner">
 									<span class="ui-btn-text"  >
 										&#60;br&#62;
 									</span>
 								</span>
 							</a>    
-							<a class="ui-btn ui-btn-up-c ui-shadow ui-btn-corner-all ui-btn-inline" data-wrapperels="span" data-iconshadow="true" data-shadow="true" data-corners="true" href="#" data-role="button" data-inline="true" data-rel="back" data-theme="c" data-mini="true" onclick="insertTag('pbr')" ontouch="insertTag('pbr')">
+							<a class="ui-btn ui-btn-up-c ui-shadow ui-btn-corner-all ui-btn-inline" data-wrapperels="span" data-iconshadow="true" data-shadow="true" data-corners="true" href="#" data-role="button" data-inline="true" data-rel="back" data-theme="c" data-mini="true" onclick="insertTag('pbr')" ontap="insertTag('pbr')">
 								<span class="ui-btn-inner">
 									<span class="ui-btn-text">
 										&#60;pbr&#62;
 									</span>
 								</span>
 							</a>
-							<a class="ui-btn ui-btn-up-c ui-shadow ui-btn-corner-all ui-btn-inline" data-wrapperels="span" data-iconshadow="true" data-shadow="true" data-corners="true" href="#" data-role="button" data-inline="true" data-rel="back" data-theme="c" data-mini="true" onclick="insertTag('section')" ontouch="insertTag('section')" >
+							<a class="ui-btn ui-btn-up-c ui-shadow ui-btn-corner-all ui-btn-inline" data-wrapperels="span" data-iconshadow="true" data-shadow="true" data-corners="true" href="#" data-role="button" data-inline="true" data-rel="back" data-theme="c" data-mini="true" onclick="insertTag('section')" ontap="insertTag('section')" >
 								<span class="ui-btn-inner">
 									<span class="ui-btn-text" >
 										&#60;section&#62;
@@ -1150,28 +1150,28 @@
 						</div>
 						<div role="main" data-role="content" data-theme="d" class="ui-corner-bottom ui-content ui-body-d">
 							<h3 class="ui-title">Select the tag you'd like to use</h3>
-							<a class="ui-btn ui-btn-up-c ui-shadow ui-btn-corner-all ui-btn-inline" data-wrapperels="span" data-iconshadow="true" data-shadow="true" data-corners="true" href="#" data-role="button" data-inline="true" data-rel="back" data-theme="c" onclick="insertTag('ol')" ontouch="insertTag('ol')">
+							<a class="ui-btn ui-btn-up-c ui-shadow ui-btn-corner-all ui-btn-inline" data-wrapperels="span" data-iconshadow="true" data-shadow="true" data-corners="true" href="#" data-role="button" data-inline="true" data-rel="back" data-theme="c" onclick="insertTag('ol')" ontap="insertTag('ol')">
 								<span class="ui-btn-inner">
 									<span class="ui-btn-text">
 										&#60;ol&#62;
 									</span>
 								</span>
 							</a>   
-							<a class="ui-btn ui-btn-up-c ui-shadow ui-btn-corner-all ui-btn-inline" data-wrapperels="span" data-iconshadow="true" data-shadow="true" data-corners="true" href="#" data-role="button" data-inline="true" data-rel="back" data-theme="c" onclick="insertTag('ul')" ontouch="insertTag('ul')" >
+							<a class="ui-btn ui-btn-up-c ui-shadow ui-btn-corner-all ui-btn-inline" data-wrapperels="span" data-iconshadow="true" data-shadow="true" data-corners="true" href="#" data-role="button" data-inline="true" data-rel="back" data-theme="c" onclick="insertTag('ul')" ontap="insertTag('ul')" >
 								<span class="ui-btn-inner">
 									<span class="ui-btn-text">
 										&#60;ul&#62;
 									</span>
 								</span>
 							</a>   
-							<a class="ui-btn ui-btn-up-c ui-shadow ui-btn-corner-all ui-btn-inline" data-wrapperels="span" data-iconshadow="true" data-shadow="true" data-corners="true" href="#" data-role="button" data-inline="true" data-rel="back" data-theme="c" onclick="insertTag('dl')" ontouch="insertTag('dl')" >
+							<a class="ui-btn ui-btn-up-c ui-shadow ui-btn-corner-all ui-btn-inline" data-wrapperels="span" data-iconshadow="true" data-shadow="true" data-corners="true" href="#" data-role="button" data-inline="true" data-rel="back" data-theme="c" onclick="insertTag('dl')" ontap="insertTag('dl')" >
 								<span class="ui-btn-inner">
 									<span class="ui-btn-text" >
 										&#60;dl&#62;
 									</span>
 								</span>
 							</a>    
-							<a class="ui-btn ui-btn-up-c ui-shadow ui-btn-corner-all ui-btn-inline" data-wrapperels="span" data-iconshadow="true" data-shadow="true" data-corners="true" href="#" data-role="button" data-inline="true" data-rel="back" data-theme="c" onclick="insertTag('li')" ontouch="insertTag('li')" data-mini="true">
+							<a class="ui-btn ui-btn-up-c ui-shadow ui-btn-corner-all ui-btn-inline" data-wrapperels="span" data-iconshadow="true" data-shadow="true" data-corners="true" href="#" data-role="button" data-inline="true" data-rel="back" data-theme="c" onclick="insertTag('li')" ontap="insertTag('li')" data-mini="true">
 								<span class="ui-btn-inner">
 									<span class="ui-btn-text" >
 										&#60;li&#62;
@@ -1197,21 +1197,21 @@
 						</div>
 						<div role="main" data-role="content" data-theme="d" class="ui-corner-bottom ui-content ui-body-d">
 							<h3 class="ui-title">Select the tag you'd like to use</h3>
-							<a class="ui-btn ui-btn-up-c ui-shadow ui-btn-corner-all ui-btn-inline" data-wrapperels="span" data-iconshadow="true" data-shadow="true" data-corners="true" href="#" data-role="button" data-inline="true" data-rel="back" data-theme="c" onclick="insertTag('table')" ontouch="insertTag('table')" data-mini="true">
+							<a class="ui-btn ui-btn-up-c ui-shadow ui-btn-corner-all ui-btn-inline" data-wrapperels="span" data-iconshadow="true" data-shadow="true" data-corners="true" href="#" data-role="button" data-inline="true" data-rel="back" data-theme="c" onclick="insertTag('table')" ontap="insertTag('table')" data-mini="true">
 								<span class="ui-btn-inner">
 									<span class="ui-btn-text" >
 										&#60;table&#62;
 									</span>
 								</span>
 							</a>   
-							<a class="ui-btn ui-btn-up-c ui-shadow ui-btn-corner-all ui-btn-inline" data-wrapperels="span" data-iconshadow="true" data-shadow="true" data-corners="true" href="#" data-role="button" data-inline="true" data-rel="back" data-theme="c" onclick="insertTag('tr')" ontouch="insertTag('tr')" data-mini="true">
+							<a class="ui-btn ui-btn-up-c ui-shadow ui-btn-corner-all ui-btn-inline" data-wrapperels="span" data-iconshadow="true" data-shadow="true" data-corners="true" href="#" data-role="button" data-inline="true" data-rel="back" data-theme="c" onclick="insertTag('tr')" ontap="insertTag('tr')" data-mini="true">
 								<span class="ui-btn-inner">
 									<span class="ui-btn-text"  >
 										&#60;tr&#62;
 									</span>
 								</span>
 							</a>   
-							<a class="ui-btn ui-btn-up-c ui-shadow ui-btn-corner-all ui-btn-inline" data-wrapperels="span" data-iconshadow="true" data-shadow="true" data-corners="true" href="#" data-role="button" data-inline="true" data-rel="back" data-theme="c" onclick="insertTag('td')" ontouch="insertTag('td')" data-mini="true">
+							<a class="ui-btn ui-btn-up-c ui-shadow ui-btn-corner-all ui-btn-inline" data-wrapperels="span" data-iconshadow="true" data-shadow="true" data-corners="true" href="#" data-role="button" data-inline="true" data-rel="back" data-theme="c" onclick="insertTag('td')" ontap="insertTag('td')" data-mini="true">
 								<span class="ui-btn-inner">
 									<span class="ui-btn-text" >
 										&#60;td&#62;
@@ -1237,14 +1237,14 @@
 						</div>
 						<div role="main" data-role="content" data-theme="d" class="ui-corner-bottom ui-content ui-body-d">
 							<h3 class="ui-title">Select the tag you'd like to use</h3>
-							<a class="ui-btn ui-btn-up-c ui-shadow ui-btn-corner-all ui-btn-inline" data-wrapperels="span" data-iconshadow="true" data-shadow="true" data-corners="true" href="#" data-role="button" data-inline="true" data-rel="back" data-theme="c" onclick="insertType('code','buggy')" ontouch="insertType('code','buggy')" data-mini="true">
+							<a class="ui-btn ui-btn-up-c ui-shadow ui-btn-corner-all ui-btn-inline" data-wrapperels="span" data-iconshadow="true" data-shadow="true" data-corners="true" href="#" data-role="button" data-inline="true" data-rel="back" data-theme="c" onclick="insertType('code','buggy')" ontap="insertType('code','buggy')" data-mini="true">
 								<span class="ui-btn-inner">
 									<span class="ui-btn-text" >
 										buggy
 									</span>
 								</span>
 							</a>   
-							<a class="ui-btn ui-btn-up-c ui-shadow ui-btn-corner-all ui-btn-inline" data-wrapperels="span" data-iconshadow="true" data-shadow="true" data-corners="true" href="#" data-role="button" data-inline="true" data-rel="back" data-theme="c" onclick="insertType('code','correct')" ontouch="insertType('code','correct')" data-mini="true">
+							<a class="ui-btn ui-btn-up-c ui-shadow ui-btn-corner-all ui-btn-inline" data-wrapperels="span" data-iconshadow="true" data-shadow="true" data-corners="true" href="#" data-role="button" data-inline="true" data-rel="back" data-theme="c" onclick="insertType('code','correct')" ontap="insertType('code','correct')" data-mini="true">
 								<span class="ui-btn-inner">
 									<span class="ui-btn-text" >
 										correct
@@ -1290,42 +1290,42 @@
 						</div>
 						<div role="main" data-role="content" data-theme="d" class="ui-corner-bottom ui-content ui-body-d">
 							<h3 class="ui-title">Select the tag you'd like to use</h3>
-							<a class="ui-btn ui-btn-up-c ui-shadow ui-btn-corner-all ui-btn-inline" data-wrapperels="span" data-iconshadow="true" data-shadow="true" data-corners="true" href="#" data-role="button" data-inline="true" data-rel="back" data-theme="c" onclick="insertTag('h1')" ontouch="insertTag('h1')" data-mini="true">
+							<a class="ui-btn ui-btn-up-c ui-shadow ui-btn-corner-all ui-btn-inline" data-wrapperels="span" data-iconshadow="true" data-shadow="true" data-corners="true" href="#" data-role="button" data-inline="true" data-rel="back" data-theme="c" onclick="insertTag('h1')" ontap="insertTag('h1')" data-mini="true">
 								<span class="ui-btn-inner">
 									<span class="ui-btn-text" >
 										&#60;h1&#62;
 									</span>
 								</span>
 							</a>   
-							<a class="ui-btn ui-btn-up-c ui-shadow ui-btn-corner-all ui-btn-inline" data-wrapperels="span" data-iconshadow="true" data-shadow="true" data-corners="true" href="#" data-role="button" data-inline="true" data-rel="back" data-theme="c" onclick="insertTag('h2')" ontouch="insertTag('h2')" data-mini="true">
+							<a class="ui-btn ui-btn-up-c ui-shadow ui-btn-corner-all ui-btn-inline" data-wrapperels="span" data-iconshadow="true" data-shadow="true" data-corners="true" href="#" data-role="button" data-inline="true" data-rel="back" data-theme="c" onclick="insertTag('h2')" ontap="insertTag('h2')" data-mini="true">
 								<span class="ui-btn-inner">
 									<span class="ui-btn-text" >
 										&#60;h2&#62;
 									</span>
 								</span>
 							</a> 
-							<a class="ui-btn ui-btn-up-c ui-shadow ui-btn-corner-all ui-btn-inline" data-wrapperels="span" data-iconshadow="true" data-shadow="true" data-corners="true" href="#" data-role="button" data-inline="true" data-rel="back" data-theme="c" onclick="insertTag('h3')" ontouch="insertTag('h3')" data-mini="true">
+							<a class="ui-btn ui-btn-up-c ui-shadow ui-btn-corner-all ui-btn-inline" data-wrapperels="span" data-iconshadow="true" data-shadow="true" data-corners="true" href="#" data-role="button" data-inline="true" data-rel="back" data-theme="c" onclick="insertTag('h3')" ontap="insertTag('h3')" data-mini="true">
 								<span class="ui-btn-inner">
 									<span class="ui-btn-text" >
 										&#60;h3&#62;
 									</span>
 								</span>
 							</a> 
-							<a class="ui-btn ui-btn-up-c ui-shadow ui-btn-corner-all ui-btn-inline" data-wrapperels="span" data-iconshadow="true" data-shadow="true" data-corners="true" href="#" data-role="button" data-inline="true" data-rel="back" data-theme="c" onclick="insertTag('h4')" ontouch="insertTag('h4')" data-mini="true">
+							<a class="ui-btn ui-btn-up-c ui-shadow ui-btn-corner-all ui-btn-inline" data-wrapperels="span" data-iconshadow="true" data-shadow="true" data-corners="true" href="#" data-role="button" data-inline="true" data-rel="back" data-theme="c" onclick="insertTag('h4')" ontap="insertTag('h4')" data-mini="true">
 								<span class="ui-btn-inner">
 									<span class="ui-btn-text" >
 										&#60;h4&#62;
 									</span>
 								</span>
 							</a> 
-							<a class="ui-btn ui-btn-up-c ui-shadow ui-btn-corner-all ui-btn-inline" data-wrapperels="span" data-iconshadow="true" data-shadow="true" data-corners="true" href="#" data-role="button" data-inline="true" data-rel="back" data-theme="c" onclick="insertTag('h5')" ontouch="insertTag('h5')" data-mini="true">
+							<a class="ui-btn ui-btn-up-c ui-shadow ui-btn-corner-all ui-btn-inline" data-wrapperels="span" data-iconshadow="true" data-shadow="true" data-corners="true" href="#" data-role="button" data-inline="true" data-rel="back" data-theme="c" onclick="insertTag('h5')" ontap="insertTag('h5')" data-mini="true">
 								<span class="ui-btn-inner">
 									<span class="ui-btn-text" >
 										&#60;h5&#62;
 									</span>
 								</span>
 							</a> 
-							<a class="ui-btn ui-btn-up-c ui-shadow ui-btn-corner-all ui-btn-inline" data-wrapperels="span" data-iconshadow="true" data-shadow="true" data-corners="true" href="#" data-role="button" data-inline="true" data-rel="back" data-theme="c" onclick="insertTag('p')" ontouch="insertTag('p')" data-mini="true">
+							<a class="ui-btn ui-btn-up-c ui-shadow ui-btn-corner-all ui-btn-inline" data-wrapperels="span" data-iconshadow="true" data-shadow="true" data-corners="true" href="#" data-role="button" data-inline="true" data-rel="back" data-theme="c" onclick="insertTag('p')" ontap="insertTag('p')" data-mini="true">
 								<span class="ui-btn-inner">
 									<span class="ui-btn-text" >
 										&#60;p&#62;
@@ -1351,28 +1351,28 @@
 						</div>
 						<div role="main" data-role="content" data-theme="d" class="ui-corner-bottom ui-content ui-body-d">
 							<h3 class="ui-title">Select the tag you'd like to use</h3>
-							<a class="ui-btn ui-btn-up-c ui-shadow ui-btn-corner-all ui-btn-inline" data-wrapperels="span" data-iconshadow="true" data-shadow="true" data-corners="true" href="#" data-role="button" data-inline="true" data-rel="back" data-theme="c" onclick="insertTag('b')" ontouch="insertTag('b')" data-mini="true">
+							<a class="ui-btn ui-btn-up-c ui-shadow ui-btn-corner-all ui-btn-inline" data-wrapperels="span" data-iconshadow="true" data-shadow="true" data-corners="true" href="#" data-role="button" data-inline="true" data-rel="back" data-theme="c" onclick="insertTag('b')" ontap="insertTag('b')" data-mini="true">
 								<span class="ui-btn-inner">
 									<span class="ui-btn-text" >
 										&#60;b&#62;
 									</span>
 								</span>
 							</a>   
-							<a class="ui-btn ui-btn-up-c ui-shadow ui-btn-corner-all ui-btn-inline" data-wrapperels="span" data-iconshadow="true" data-shadow="true" data-corners="true" href="#" data-role="button" data-inline="true" data-rel="back" data-theme="c" onclick="insertTag('i')" ontouch="insertTag('i')" data-mini="true">
+							<a class="ui-btn ui-btn-up-c ui-shadow ui-btn-corner-all ui-btn-inline" data-wrapperels="span" data-iconshadow="true" data-shadow="true" data-corners="true" href="#" data-role="button" data-inline="true" data-rel="back" data-theme="c" onclick="insertTag('i')" ontap="insertTag('i')" data-mini="true">
 								<span class="ui-btn-inner">
 									<span class="ui-btn-text" >
 										&#60;i&#62;
 									</span>
 								</span>
 							</a> 
-							<a class="ui-btn ui-btn-up-c ui-shadow ui-btn-corner-all ui-btn-inline" data-wrapperels="span" data-iconshadow="true" data-shadow="true" data-corners="true" href="#" data-role="button" data-inline="true" data-rel="back" data-theme="c" onclick="insertTag('sup')" ontouch="insertTag('sup')" data-mini="true">
+							<a class="ui-btn ui-btn-up-c ui-shadow ui-btn-corner-all ui-btn-inline" data-wrapperels="span" data-iconshadow="true" data-shadow="true" data-corners="true" href="#" data-role="button" data-inline="true" data-rel="back" data-theme="c" onclick="insertTag('sup')" ontap="insertTag('sup')" data-mini="true">
 								<span class="ui-btn-inner">
 									<span class="ui-btn-text" >
 										&#60;sup&#62;
 									</span>
 								</span>
 							</a> 
-							<a class="ui-btn ui-btn-up-c ui-shadow ui-btn-corner-all ui-btn-inline" data-wrapperels="span" data-iconshadow="true" data-shadow="true" data-corners="true" href="#" data-role="button" data-inline="true" data-rel="back" data-theme="c" onclick="insertTag('sub')" ontouch="insertTag('sub')" data-mini="true">
+							<a class="ui-btn ui-btn-up-c ui-shadow ui-btn-corner-all ui-btn-inline" data-wrapperels="span" data-iconshadow="true" data-shadow="true" data-corners="true" href="#" data-role="button" data-inline="true" data-rel="back" data-theme="c" onclick="insertTag('sub')" ontap="insertTag('sub')" data-mini="true">
 								<span class="ui-btn-inner">
 									<span class="ui-btn-text" >
 										&#60;sub&#62;
@@ -1398,28 +1398,28 @@
 						</div>
 						<div role="main" data-role="content" data-theme="d" class="ui-corner-bottom ui-content ui-body-d">
 							<h3 class="ui-title">Select the tag you'd like to use</h3>
-							<a class="ui-btn ui-btn-up-c ui-shadow ui-btn-corner-all ui-btn-inline" data-wrapperels="span" data-iconshadow="true" data-shadow="true" data-corners="true" href="#" data-role="button" data-inline="true" data-rel="back" data-theme="c" onclick="insertType('mark','yellow')" ontouch="insertTag('mark','yellow')" data-mini="true">
+							<a class="ui-btn ui-btn-up-c ui-shadow ui-btn-corner-all ui-btn-inline" data-wrapperels="span" data-iconshadow="true" data-shadow="true" data-corners="true" href="#" data-role="button" data-inline="true" data-rel="back" data-theme="c" onclick="insertType('mark','yellow')" ontap="insertTag('mark','yellow')" data-mini="true">
 								<span class="ui-btn-inner">
 									<span class="ui-btn-text" >
 										yellow
 									</span>
 								</span>
 							</a>   
-							<a class="ui-btn ui-btn-up-c ui-shadow ui-btn-corner-all ui-btn-inline" data-wrapperels="span" data-iconshadow="true" data-shadow="true" data-corners="true" href="#" data-role="button" data-inline="true" data-rel="back" data-theme="c" onclick="insertType('mark','red')" ontouch="insertTag('mark','red')" data-mini="true">
+							<a class="ui-btn ui-btn-up-c ui-shadow ui-btn-corner-all ui-btn-inline" data-wrapperels="span" data-iconshadow="true" data-shadow="true" data-corners="true" href="#" data-role="button" data-inline="true" data-rel="back" data-theme="c" onclick="insertType('mark','red')" ontap="insertTag('mark','red')" data-mini="true">
 								<span class="ui-btn-inner">
 									<span class="ui-btn-text" >
 										red
 									</span>
 								</span>
 							</a> 
-							<a class="ui-btn ui-btn-up-c ui-shadow ui-btn-corner-all ui-btn-inline" data-wrapperels="span" data-iconshadow="true" data-shadow="true" data-corners="true" href="#" data-role="button" data-inline="true" data-rel="back" data-theme="c" onclick="insertType('mark','blue')" ontouch="insertTag('mark','blue')" data-mini="true">
+							<a class="ui-btn ui-btn-up-c ui-shadow ui-btn-corner-all ui-btn-inline" data-wrapperels="span" data-iconshadow="true" data-shadow="true" data-corners="true" href="#" data-role="button" data-inline="true" data-rel="back" data-theme="c" onclick="insertType('mark','blue')" ontap="insertTag('mark','blue')" data-mini="true">
 								<span class="ui-btn-inner">
 									<span class="ui-btn-text" >
 										blue
 									</span>
 								</span>
 							</a> 
-							<a class="ui-btn ui-btn-up-c ui-shadow ui-btn-corner-all ui-btn-inline" data-wrapperels="span" data-iconshadow="true" data-shadow="true" data-corners="true" href="#" data-role="button" data-inline="true" data-rel="back" data-theme="c" onclick="insertType('mark','green')" ontouch="insertTag('mark','green')" data-mini="true">
+							<a class="ui-btn ui-btn-up-c ui-shadow ui-btn-corner-all ui-btn-inline" data-wrapperels="span" data-iconshadow="true" data-shadow="true" data-corners="true" href="#" data-role="button" data-inline="true" data-rel="back" data-theme="c" onclick="insertType('mark','green')" ontap="insertTag('mark','green')" data-mini="true">
 								<span class="ui-btn-inner">
 									<span class="ui-btn-text" >
 										green
@@ -1444,9 +1444,9 @@
 			</div>
 
 			<div class="button-controls">
-				<a onclick="deleteNote()" ontouch="deleteNote()" data-theme="e" data-role="button" data-mini="true" data-inline="true" style="margin-left: 10px;">Delete</a>	
+				<a onclick="deleteNote()" ontap="deleteNote()" data-theme="e" data-role="button" data-mini="true" data-inline="true" style="margin-left: 10px;">Delete</a>	
 
-				<a data-theme="b" data-role="button" data-mini="true" onclick="saveNote()" ontouch="saveNote()" id="save-button" data-inline="true">Save</a>
+				<a data-theme="b" data-role="button" data-mini="true" onclick="saveNote()" ontap="saveNote()" id="save-button" data-inline="true">Save</a>
 				
 				<a href="#preview" data-theme="a" data-role="button" data-mini="true" data-inline="true" onclick="convertToHTML()" ontouch="convertToHTML()">Preview</a>	
 			</div>
@@ -1505,11 +1505,12 @@
 	</div>
 
 
-	<script type="text/javascript" src="jquery.min.js"></script>
-	<script type="text/javascript" src="jquery.mobile-1.2.0.min.js"></script>
-	<script type="text/javascript" src="https://apis.google.com/js/client.js?onload=handleClientLoad"></script>
-	<script type="text/javascript" src="PreliminaryDraft.js"></script>
-	<script type="text/javascript" src="googleDocs.js"></script>
+	<script src="jquery.min.js"></script>
+	<script src="jquery.mobile-1.2.0.min.js"></script>
+	<script src="https://apis.google.com/js/client.js?onload=handleClientLoad"></script>
+	<script src="base64.js"></script>
+	<script src="PreliminaryDraft.js"></script>
+	<script src="googleDocs.js"></script>
 
 </body>
 </html>
