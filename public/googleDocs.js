@@ -119,7 +119,7 @@ function insertFile(fileData, callback) {
               'body': multipartRequestBody});
           if (!callback) {
             callback = function(file) {
-              console.log(file)
+              $('#popup-google').popup('open');
             };
           }
           request.execute(callback);

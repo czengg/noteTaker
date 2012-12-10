@@ -1470,6 +1470,25 @@
 		<div data-role="content" id="preview_content" role="main" >
 			<!-- Save to google drive Button -->
 			<a data-role="button" id="save-google" onclick="convertAndSave()" ontouch="convertAndSave()">Save to Google Drive</a>
+
+			<div id="popup-google-popup" class="ui-popup-container pop in ui-popup-active ui-popup-hidden" tabindex="0">
+				<div data-dismissible="true" data-position-to="origin" data-transition="none" data-corners="true" data-shadow="true" data-disabled="false" aria-disabled="false" data-role="popup" id="popup-google" data-overlay-theme="a" data-theme="c" style="max-width:400px;" class="ui-corner-all ui-popup ui-body-c ui-overlay-shadow">
+					<div role="banner" data-role="header" data-theme="a" class="ui-corner-top ui-header ui-bar-a">
+						<h1 aria-level="1" role="heading" class="ui-title">Congratulations!</h1>
+					</div>
+					<div role="main" data-role="content" data-theme="d" class="ui-corner-bottom ui-content ui-body-d">
+						<h3 class="ui-title">Your note has been successfully saved in Google Drive!</h3>
+						<a class="ui-btn ui-btn-up-c ui-shadow ui-btn-corner-all" data-wrapperels="span" data-iconshadow="true" data-shadow="true" data-corners="true" href="#" data-role="button" data-inline="true" data-rel="back" data-theme="c">
+							<span class="ui-btn-inner">
+								<span class="ui-btn-text" data-mini="true">
+									Close
+								</span>
+							</span>
+						</a>
+					</div>
+				</div>
+			</div>
+
 		</div>
 
 		<!-- footer -->
@@ -1484,6 +1503,7 @@
 			</div>
 		</div>
 	</div>
+
 
 	<script src="jquery.min.js"></script>
 	<script src="jquery.mobile-1.2.0.min.js"></script>
