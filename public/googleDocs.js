@@ -18,6 +18,8 @@ function checkAuth() {
       handleAuthResult);
 }
 
+
+// gets user specific id from google
 function getId(authResult) {
   $.ajax( {
     url: 'https://www.googleapis.com/oauth2/v1/userinfo' ,
@@ -40,11 +42,9 @@ function getId(authResult) {
  */
 function handleAuthResult(authResult) {
   var authButton = $('#authorizeButton');
-  console.log(authResult);
   if (authResult && !authResult.error) {
     // Access token has been successfully retrieved, requests can be sent to the API.
     authButton.css("display","none");
-    console.log(gapi);
     getId(authResult);
   } else {
     // No access token could be retrieved, show the button to start the authorization flow.
@@ -70,10 +70,7 @@ function handleAuthResult(authResult) {
  * @param {Object} evt Arguments from the file selector.
  */
 function uploadFile(file) {
-  console.log("uploadFile");
   gapi.client.load('drive', 'v2', function() {
-    // var pdfBlob = new Blob([file], { "type" : "application/pdf"})
-    // insertFile(pdfBlob);
     insertFile(file);
   });
 }
@@ -97,7 +94,6 @@ function insertFile(fileData, callback) {
           }
 
           var base64Data = btoa(fileData);
-          console.log(base64Data);
           var multipartRequestBody =
               delimiter +
               'Content-Type: application/json\r\n\r\n' +
@@ -137,7 +133,6 @@ function addNote() {
       content: "<note></note>"
     }
   }).done(function(note) {
-      console.log(note);
       window.titleSet[note.title] = note._id;
 
       var listElement = $("<li style='height:60px;' id="+note._id+"></li>");
@@ -150,6 +145,7 @@ function addNote() {
   });
 }
 
+// saves note to mongo db
 function saveNote() {
   $.ajax({
     url: '/editContent',
@@ -158,11 +154,10 @@ function saveNote() {
       content: $("#note-text").val()
     },
     type: 'POST'
-  }).done(function(res) {
-    console.log(res);
   });
 }
 
+// populates list with saved notes on mongo
 function populateNotesFolder(array) {
 
   var list = $("<ul data-role='listview' id='notesList'></ul>");
@@ -192,6 +187,7 @@ function populateNotesFolder(array) {
   
 }
 
+// inserts selected note's title into editor
 function insertTitle() {
   var title = $("#note-title").val();
   $("#note-text").empty();
@@ -208,6 +204,7 @@ function insertTitle() {
   }
 }
 
+// get contents of a note from mongo 
 function getContentById(noteId) {
   $.ajax( {
     url: '/getContent',
@@ -216,19 +213,19 @@ function getContentById(noteId) {
     },
     type: 'POST'
   }).done(function(res) {
-    console.log("getContent: " , res);
-    console.log(res.content);
     $("#note-text").val(res.content);
     return;
   });
 }
 
+// puts content and title into editor
 function populateEditor(title) {
   getContentById(window.titleSet[title]);
   $("#editor-note-title").text(title);
   $.mobile.changePage("#editor");
 }
 
+// gets notes from mongo
 function getNotes() {
   $.ajax({
     url: '/getFiles',
@@ -240,6 +237,7 @@ function getNotes() {
   });
 }
 
+// deletes note from mongo
 function deleteNote() {
   $.ajax({
     url: '/delete',
@@ -252,11 +250,13 @@ function deleteNote() {
   });
 }
 
+// removes note from list after removed from mongo
 function deleteFromList(title) {
   $("#"+window.titleSet[title]).remove();
   delete window.titleSet[title];
 }
 
+// converts xml input to html and injects into iframe for preview
 function convertToHTML() {
   $.ajax({
     type: 'POST' ,
@@ -272,19 +272,17 @@ function convertToHTML() {
       var doc = frame[0].contentWindow.document;
       var body = $('body',doc);
       body.html(res);
-      console.log(res);
     }, 1);
 
     $.mobile.changePage("#preview");
   });
 }
 
+// converts html in iframe to pdf and stores on google drive
 function convertAndSave() {
   var doc = $('#preview-frame')[0].contentWindow.document;
   var body = $('body', doc);
   var html = "<html><body>" + body.html() + "</body></html>";
-  console.log("convertAndSave");
-  console.log(html);
   $.ajax({
     type: 'POST',
     url: '/createPDF',
@@ -297,12 +295,7 @@ function convertAndSave() {
   });
 }
 
-function redirect(path) {
-  // console.log(this);
-  window.location.href = path;
-  // console.log(this);
-}
-
+// enables navigation after login
 function enableButtons() {
   $(".button-home-notes").removeClass("ui-disabled");
 }

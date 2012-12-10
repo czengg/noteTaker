@@ -16,10 +16,7 @@ var css = '@import url("http://fonts.googleapis.com/css?family=Lora:400,700,400i
 
 
 function init(){
-
     configureExpress(app);
-
-    var User = initUser();
 }
 
 init();
@@ -39,13 +36,6 @@ db.once("open", function() {
 
 var client = new pdf.Pdfcrowd("mrmeku","d6bbd7a788b1763cf98f46faaaf7a2b3");
 
-// mongo.Db.connect(mongoUri, function (err, db) {
-//   db.collection('db', function(er, collection) {
-//     collection.insert({'mykey': 'myvalue'}, {safe: true}, function(er,rs) {
-//     });
-//   });
-// });
-
 function configureExpress(app){
     app.configure(function(){
 
@@ -56,20 +46,9 @@ function configureExpress(app){
     	app.use(express.session({secret:"keyboard cat"}));
     	app.use(express.static(path.join(__dirname, 'public')));
 
-        //app.use(allowCrossDomain);
-
         app.use(app.router);
         app.use(express.errorHandler({ dumpExceptions: true, showStack: true }));
     });
-}
-
-function initUser() {
-	var User = new mongoose.Schema({
-		files: Array,
-		lastLoginTimestamp: Date,
-	});
-
-	User.add
 }
 
 // CORS Mtitledleware that sends HTTP headers with every request
@@ -126,7 +105,6 @@ app.get('/add', function (req,res) {
 		}
 		else
 		{
-			console.log(note);
 			res.send(note);
 		}
 	})
@@ -150,15 +128,12 @@ app.get('/delete', function(req, res) {
 	NoteModel.findOne( { _id: args.id} , 
 		function(err, note)
 		{
-			console.log(args.id);
-			console.log(note);
 			note.remove(function(err) {
 				if(err) {
 					res.send(err);
 				}
 				else
 				{
-					console.log(note);
 					res.send(note);
 				}
 			})
@@ -188,32 +163,7 @@ app.post('/editContent', function(req, res) {
 });
 
 app.post('/createPDF', function(req, res) {
-	// $.ajax({
-	// 	type:'POST',
-	// 	url: 'http://pdfcrowd.com/api/pdf/convert/html/',
-	// 	data: {
-	// 		src: req.body.html,
-	// 		username: 'mrmeku',
-	// 		key:'d6bbd7a788b1763cf98f46faaaf7a2b3'
-	// 	}
-	// }).done(function(stream) {
-	// 	saveToFile('./public/'+req.body.id+".pdf",stream);
-	// 	app.get("/public/"+req.body.id+'.pdf', function(request, response) {
-	// 							response.writeHead(200, {"Content-Type" : "application/pdf",
-	// 													 "Content-Disposition" : "attachment; filename="+req.body.id+".pdf"});
- //                                response.sendfile('/public/' + req.body.id+".pdf");
-	// 	});
-	// 	res.send(req.body.id+".pdf");
-	// });
-	// client.convertHtml(req.body.html, pdf.saveToFile('./public/'+req.body.id+".pdf",'attachment'));
 	client.convertHtml(req.body.html, pdf.saveToFile(req.body.id+".pdf"),convertToBinary(req.body.id+".pdf",res));
-	// app.get("/public/"+req.body.id+'.pdf', function(request, response) {
-	// 							response.writeHead(200, {"Content-Type" : "application/pdf",
-	// 													 "Content-Disposition" : "attachment; filename="+req.body.id+".pdf"});
- //                                response.sendfile('/public/' + req.body.id+".pdf");
-	// });
-	// res.send(req.body.id+".pdf");
-	// client.convertHtml(req.body.html, pdf.saveToFile());
 });
 
 function convertToBinary(path,response) {
@@ -237,10 +187,8 @@ function xmlToHtml(xmlString, res) {
 		{
 			return res.send();
 		}
-		console.log(doc.toXml());
 		var body = doc.toXml();
 		var html = '<!DOCTYPE html><html><head><meta content="initial-scale=1, minimum-scale=1, width=device-width" name="viewport"><style type="text/css">' + css + '</style><script type="text/javascript" src="prettify.js"></script></head>' + body + "</html>";
-		console.log(html);
 		return res.send(html);
 	});
 }
