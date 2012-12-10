@@ -46,11 +46,11 @@ function handleAuthResult(authResult) {
     $("#logOutButton").css("display","inline-block");
     console.log(gapi);
     getId(authResult);
-    enableButtons();
   } else {
     // No access token could be retrieved, show the button to start the authorization flow.
     authButton.css('inline-block');
     authButton.click(function() {
+        enableButtons();
         gapi.auth.authorize(
             {'client_id': CLIENT_ID, 'scope': SCOPES, 'immediate': false},
             handleAuthResult);
