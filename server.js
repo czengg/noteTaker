@@ -8,6 +8,7 @@ var fs = require('fs');
 var querystring = require('querystring');
 var url = require('url');
 var pdf = require('pdfcrowd');
+var $ = require('jquery');
 var app = express();
 var port = process.env.PORT || 8080;
 var DomJS = require("dom-js").DomJS;
@@ -188,11 +189,45 @@ app.post('/editContent', function(req, res) {
 });
 
 app.post('/createPDF', function(req, res) {
-	client.convertHtml(req.body.html,function(readableStream) {
-		res.send(readableStream);
-	})
-})
+	// $.ajax({
+	// 	type:'POST',
+	// 	url: 'http://pdfcrowd.com/api/pdf/convert/html/',
+	// 	data: {
+	// 		src: req.body.html,
+	// 		username: 'mrmeku',
+	// 		key:'d6bbd7a788b1763cf98f46faaaf7a2b3'
+	// 	}
+	// }).done(function(stream) {
+	// 	saveToFile('./public/'+req.body.id+".pdf",stream);
+	// 	app.get("/public/"+req.body.id+'.pdf', function(request, response) {
+	// 							response.writeHead(200, {"Content-Type" : "application/pdf",
+	// 													 "Content-Disposition" : "attachment; filename="+req.body.id+".pdf"});
+ //                                response.sendfile('/public/' + req.body.id+".pdf");
+	// 	});
+	// 	res.send(req.body.id+".pdf");
+	// });
+	// client.convertHtml(req.body.html, pdf.saveToFile('./public/'+req.body.id+".pdf",'attachment'));
+	client.convertHtml(req.body.html, pdf.saveToFile(req.body.id+".pdf"),convertToBinary(req.body.id+".pdf",res));
+	// app.get("/public/"+req.body.id+'.pdf', function(request, response) {
+	// 							response.writeHead(200, {"Content-Type" : "application/pdf",
+	// 													 "Content-Disposition" : "attachment; filename="+req.body.id+".pdf"});
+ //                                response.sendfile('/public/' + req.body.id+".pdf");
+	// });
+	// res.send(req.body.id+".pdf");
+	// client.convertHtml(req.body.html, pdf.saveToFile());
+});
 
+function convertToBinary(path,response) {
+	setTimeout(function() {
+		fs.readFile(path, function(err, data) {
+			if(err) {
+				throw err;
+			}
+			var binaryString = data.toString('binary');
+			response.send(binaryString);
+		})
+	},3000);		
+}
 
 function xmlToHtml(xmlString, res) {
 	var parser = new DomJS();

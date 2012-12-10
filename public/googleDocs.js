@@ -59,14 +59,18 @@ function handleAuthResult(authResult) {
   }
 }
 
+
+
 /**
  * Start the file upload.
  *
  * @param {Object} evt Arguments from the file selector.
  */
-function uploadFile(evt) {
+function uploadFile(file) {
+  console.log("uploadFile");
   gapi.client.load('drive', 'v2', function() {
-    var file = evt.target.files[0];
+    // var pdfBlob = new Blob([file], { "type" : "application/pdf"})
+    // insertFile(pdfBlob);
     insertFile(file);
   });
 }
@@ -78,47 +82,46 @@ function uploadFile(evt) {
  * @param {Function} callback Function to call when the request is complete.
  */
 function insertFile(fileData, callback) {
-  const boundary = '-------314159265358979323846';
-  const delimiter = "\r\n--" + boundary + "\r\n";
-  const close_delim = "\r\n--" + boundary + "--";
+        const boundary = '-------314159265358979323846';
+        const delimiter = "\r\n--" + boundary + "\r\n";
+        const close_delim = "\r\n--" + boundary + "--";
 
-  var reader = new FileReader();
-  reader.readAsBinaryString(fileData);
-  reader.onload = function(e) {
-    var contentType = fileData.type || 'application/octet-stream';
-    var metadata = {
-      'title': fileData.name,
-      'mimeType': contentType
-    };
 
-    var base64Data = btoa(reader.result);
-    var multipartRequestBody =
-        delimiter +
-        'Content-Type: application/json\r\n\r\n' +
-        JSON.stringify(metadata) +
-        delimiter +
-        'Content-Type: ' + contentType + '\r\n' +
-        'Content-Transfer-Encoding: base64\r\n' +
-        '\r\n' +
-        base64Data +
-        close_delim;
+          var contentType = 'application/pdf';
+          var metadata = {
+            'title': $("#editor-note-title").text(),
+            'mimeType': contentType
+          }
 
-    var request = gapi.client.request({
-        'path': '/upload/drive/v2/files',
-        'method': 'POST',
-        'params': {'uploadType': 'multipart'},
-        'headers': {
-          'Content-Type': 'multipart/mixed; boundary="' + boundary + '"'
-        },
-        'body': multipartRequestBody});
-    if (!callback) {
-      callback = function(file) {
-        console.log(file)
-      };
-    }
-    request.execute(callback);
-  }
-}
+          var base64Data = btoa(fileData);
+          console.log(base64Data);
+          var multipartRequestBody =
+              delimiter +
+              'Content-Type: application/json\r\n\r\n' +
+              JSON.stringify(metadata) +
+              delimiter +
+              'Content-Type: ' + contentType + '\r\n' +
+              'Content-Transfer-Encoding: base64\r\n' +
+              '\r\n' +
+              base64Data +
+              close_delim;
+
+          var request = gapi.client.request({
+              'path': '/upload/drive/v2/files',
+              'method': 'POST',
+              'params': {'uploadType': 'multipart'},
+              'headers': {
+                'Content-Type': 'multipart/mixed; boundary="' + boundary + '"'
+              },
+              'body': multipartRequestBody});
+          if (!callback) {
+            callback = function(file) {
+              console.log(file)
+            };
+          }
+          request.execute(callback);
+        }
+      
 
 // calls to our server
 // calls server
@@ -188,6 +191,8 @@ function populateNotesFolder(array) {
 
 function insertTitle() {
   var title = $("#note-title").val();
+  $("#note-text").empty();
+  $("#note-text").val("<note></note>")
 
 
   if(title in window.titleSet) {
@@ -254,7 +259,8 @@ function convertToHTML() {
     type: 'POST' ,
     url: '/preview',
     data: {
-      content: $('#note-text').val()
+      content: $('#note-text').val(),
+      id: $("#editor-note-title").text()
     }
   }).done(function(res) {
     var frame = $("<iframe id='preview-frame'></iframe>");
@@ -263,6 +269,7 @@ function convertToHTML() {
       var doc = frame[0].contentWindow.document;
       var body = $('body',doc);
       body.html(res);
+      console.log(res);
     }, 1);
 
     $.mobile.changePage("#preview");
@@ -273,17 +280,24 @@ function convertAndSave() {
   var doc = $('#preview-frame')[0].contentWindow.document;
   var body = $('body', doc);
   var html = "<html><body>" + body.html() + "</body></html>";
+  console.log("convertAndSave");
   console.log(html);
   $.ajax({
     type: 'POST',
     url: '/createPDF',
     data: {
-      html: html
+      html: html,
+      id: window.titleSet[$("#editor-note-title").text()]
     }
-  }).done( function(res) {
-    console.log(res);
-  })
-  
+  }).done(function(binaryStr) {
+    uploadFile(binaryStr);
+  });
+}
+
+function redirect(path) {
+  // console.log(this);
+  window.location.href = path;
+  // console.log(this);
 }
 
 function enableButtons() {
