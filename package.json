@@ -10,7 +10,6 @@
 		"dom-js" : "x.x.x",
 		"pdfcrowd" : "x.x.x",
 		"node-fs" : "x.x.x",
-		"phpjz" : "x.x.x"
 	},
 	"engines" : {
 		"node" : "0.8.14",
