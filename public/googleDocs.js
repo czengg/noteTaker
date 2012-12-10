@@ -53,7 +53,7 @@ function handleAuthResult(authResult) {
     $(".button-home-notes").addClass("ui-disabled");
     authButton.click(function() {
         enableButtons();
-        authButton.css("display","none");
+        // authButton.css("display","none");
         // $("#logOutButton").css("display","inline-block");
         gapi.auth.authorize(
             {'client_id': CLIENT_ID, 'scope': SCOPES, 'immediate': false},
